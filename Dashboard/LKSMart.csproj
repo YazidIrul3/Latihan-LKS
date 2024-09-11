@@ -54,6 +54,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FOODXYZDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FOODXYZDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +89,7 @@
     <Compile Include="FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Koneksi.cs" />
     <Compile Include="LKSMartDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,6 +145,17 @@
     </None>
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FOODXYZDataSet.xsc">
+      <DependentUpon>FOODXYZDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FOODXYZDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FOODXYZDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FOODXYZDataSet.xss">
+      <DependentUpon>FOODXYZDataSet.xsd</DependentUpon>
     </None>
     <None Include="LKSMartDataSet.xsc">
       <DependentUpon>LKSMartDataSet.xsd</DependentUpon>

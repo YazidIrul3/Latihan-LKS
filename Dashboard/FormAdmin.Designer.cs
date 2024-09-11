@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.Btn_LogActivity = new System.Windows.Forms.Button();
             this.Btn_KelolaLaporan = new System.Windows.Forms.Button();
@@ -44,12 +47,21 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
+            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbllogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_logTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_logTableAdapter();
+            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,6 +77,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(322, 732);
             this.panel1.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(106, 284);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 44);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Admin";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(42, 45);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(249, 242);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // button2
             // 
@@ -164,7 +197,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Azure;
-            this.dateTimePicker1.CustomFormat = "dd/mm/yyyy";
+            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(336, 206);
@@ -175,10 +208,10 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.Azure;
-            this.dateTimePicker2.CustomFormat = "dd/mm/yyyy";
+            this.dateTimePicker2.CustomFormat = "yyyy/MM/dd";
             this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(598, 206);
+            this.dateTimePicker2.Location = new System.Drawing.Point(597, 198);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 27);
             this.dateTimePicker2.TabIndex = 7;
@@ -209,7 +242,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idlogDataGridViewTextBoxColumn,
+            this.waktuDataGridViewTextBoxColumn,
+            this.aktivitasDataGridViewTextBoxColumn,
+            this.iduserDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tbllogBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(25, 67);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -228,26 +268,57 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "LOG";
             // 
-            // label10
+            // fOODXYZDataSet
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(106, 284);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 45);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Admin";
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // pictureBox1
+            // fOODXYZDataSetBindingSource
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(42, 45);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 242);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource.Position = 0;
+            // 
+            // tbllogBindingSource
+            // 
+            this.tbllogBindingSource.DataMember = "tbl_log";
+            this.tbllogBindingSource.DataSource = this.fOODXYZDataSetBindingSource;
+            // 
+            // tbl_logTableAdapter
+            // 
+            this.tbl_logTableAdapter.ClearBeforeFill = true;
+            // 
+            // idlogDataGridViewTextBoxColumn
+            // 
+            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
+            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
+            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
+            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idlogDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // waktuDataGridViewTextBoxColumn
+            // 
+            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
+            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
+            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
+            this.waktuDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // aktivitasDataGridViewTextBoxColumn
+            // 
+            this.aktivitasDataGridViewTextBoxColumn.DataPropertyName = "aktivitas";
+            this.aktivitasDataGridViewTextBoxColumn.HeaderText = "aktivitas";
+            this.aktivitasDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aktivitasDataGridViewTextBoxColumn.Name = "aktivitasDataGridViewTextBoxColumn";
+            this.aktivitasDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // iduserDataGridViewTextBoxColumn
+            // 
+            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
+            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
+            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
+            this.iduserDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormAdmin
             // 
@@ -268,10 +339,13 @@
             this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,6 +370,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource;
+        private FOODXYZDataSet fOODXYZDataSet;
+        private System.Windows.Forms.BindingSource tbllogBindingSource;
+        private FOODXYZDataSetTableAdapters.tbl_logTableAdapter tbl_logTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idlogDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aktivitasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iduserDataGridViewTextBoxColumn;
     }
 }
 
