@@ -16,8 +16,12 @@ namespace Dashboard
     {
         string ConnectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
         DataTable dt = new DataTable();
-        public FormAdmin()
+        string userId, tipeUser;
+        Koneksi koneksi = new Koneksi();
+        public FormAdmin(string tipeUser,string userId)
         {
+            this.userId = userId.ToString();
+            this.tipeUser = tipeUser.ToString();
             InitializeComponent();
             dgv();
         }
@@ -36,14 +40,18 @@ namespace Dashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormUser form = new FormUser();
+            FormUser form = new FormUser(tipeUser, userId);
+            this.Hide();
             form.ShowDialog();
+            this.Close();
         }
 
         private void Btn_KelolaLaporan_Click(object sender, EventArgs e)
         {
-            FormLaporan form = new FormLaporan();
+            FormLaporan form = new FormLaporan(tipeUser,userId);
+            this.Hide();
             form.ShowDialog();
+            this.Close();
         }
 
         private void Btn_LogActivity_Click(object sender, EventArgs e)
@@ -65,6 +73,13 @@ namespace Dashboard
 
             dataGridView1.DataSource = dt;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            koneksi.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
+
+        }
+
         private void showDGV()
         {
             using(SqlConnection conn = new SqlConnection(ConnectionString))

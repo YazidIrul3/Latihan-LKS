@@ -17,7 +17,7 @@ namespace Dashboard
         Koneksi koneksi = new Koneksi();
 
         DataTable dt = new DataTable();
-        string userId, tipeUser, namaUser;
+        string userId, tipeUser;
         public Login()
         {
             InitializeComponent();
@@ -74,7 +74,7 @@ namespace Dashboard
 
                         if(tipeUser == "Admin")
                         {
-                            FormAdmin formAdmin = new FormAdmin();
+                            FormAdmin formAdmin = new FormAdmin(tipeUser,userId);
                             this.Hide();
                             formAdmin.ShowDialog();
                             this.Close();

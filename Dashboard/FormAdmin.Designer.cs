@@ -46,22 +46,22 @@
             this.Btn_Filter = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
-            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbllogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
+            this.label5 = new System.Windows.Forms.Label();
             this.tbl_logTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_logTableAdapter();
-            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,6 +111,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Logout";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Btn_LogActivity
             // 
@@ -257,6 +258,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(819, 314);
             this.dataGridView1.TabIndex = 10;
             // 
+            // tbllogBindingSource
+            // 
+            this.tbllogBindingSource.DataMember = "tbl_log";
+            this.tbllogBindingSource.DataSource = this.fOODXYZDataSetBindingSource;
+            // 
+            // fOODXYZDataSetBindingSource
+            // 
+            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource.Position = 0;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -268,41 +284,17 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "LOG";
             // 
-            // fOODXYZDataSet
-            // 
-            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
-            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fOODXYZDataSetBindingSource
-            // 
-            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
-            this.fOODXYZDataSetBindingSource.Position = 0;
-            // 
-            // tbllogBindingSource
-            // 
-            this.tbllogBindingSource.DataMember = "tbl_log";
-            this.tbllogBindingSource.DataSource = this.fOODXYZDataSetBindingSource;
-            // 
             // tbl_logTableAdapter
             // 
             this.tbl_logTableAdapter.ClearBeforeFill = true;
             // 
-            // idlogDataGridViewTextBoxColumn
+            // iduserDataGridViewTextBoxColumn
             // 
-            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
-            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
-            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
-            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idlogDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // waktuDataGridViewTextBoxColumn
-            // 
-            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
-            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
-            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
-            this.waktuDataGridViewTextBoxColumn.Width = 125;
+            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
+            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
+            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
+            this.iduserDataGridViewTextBoxColumn.Width = 125;
             // 
             // aktivitasDataGridViewTextBoxColumn
             // 
@@ -312,13 +304,22 @@
             this.aktivitasDataGridViewTextBoxColumn.Name = "aktivitasDataGridViewTextBoxColumn";
             this.aktivitasDataGridViewTextBoxColumn.Width = 125;
             // 
-            // iduserDataGridViewTextBoxColumn
+            // waktuDataGridViewTextBoxColumn
             // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            this.iduserDataGridViewTextBoxColumn.Width = 125;
+            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
+            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
+            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
+            this.waktuDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // idlogDataGridViewTextBoxColumn
+            // 
+            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
+            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
+            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
+            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idlogDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormAdmin
             // 
@@ -343,9 +344,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -70,6 +70,10 @@
             this.Txt_Password = new System.Windows.Forms.MaskedTextBox();
             this.Txt_Nama = new System.Windows.Forms.MaskedTextBox();
             this.Txt_TipeUser = new System.Windows.Forms.MaskedTextBox();
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
+            this.tbluserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_userTableAdapter1 = new Dashboard.FOODXYZDataSetTableAdapters.tbl_userTableAdapter();
+            this.tbluserBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -78,6 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,6 +134,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Logout";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Btn_KelolaUser
             // 
@@ -344,7 +352,7 @@
             this.usernameDataGridViewTextBoxColumn,
             this.teleponDataGridViewTextBoxColumn,
             this.passwordDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tbluserBindingSource;
+            this.dataGridView1.DataSource = this.tbluserBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(82, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -504,6 +512,25 @@
             this.Txt_TipeUser.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.Txt_TipeUser.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_TipeUser_MaskInputRejected);
             // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbluserBindingSource1
+            // 
+            this.tbluserBindingSource1.DataMember = "tbl_user";
+            this.tbluserBindingSource1.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbl_userTableAdapter1
+            // 
+            this.tbl_userTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tbluserBindingSource2
+            // 
+            this.tbluserBindingSource2.DataMember = "tbl_user";
+            this.tbluserBindingSource2.DataSource = this.fOODXYZDataSet;
+            // 
             // FormUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -529,7 +556,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "FormUser";
-            this.Text = "User";
+            this.Text = "i8";
             this.Load += new System.EventHandler(this.FormUser_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -541,6 +568,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,5 +618,9 @@
         private System.Windows.Forms.MaskedTextBox Txt_TipeUser;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private FOODXYZDataSet fOODXYZDataSet;
+        private System.Windows.Forms.BindingSource tbluserBindingSource1;
+        private FOODXYZDataSetTableAdapters.tbl_userTableAdapter tbl_userTableAdapter1;
+        private System.Windows.Forms.BindingSource tbluserBindingSource2;
     }
 }

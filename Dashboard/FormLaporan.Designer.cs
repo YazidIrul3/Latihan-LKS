@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLaporan));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,7 +43,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Filter = new System.Windows.Forms.Button();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbltranksaksiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,11 +55,18 @@
             this.Btn_Generate = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.tbl_tranksaksiTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter();
+            this.idtranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgltranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namakasirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalbayarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbltranksaksiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +117,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Logout";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Btn_KelolaLaporan
             // 
@@ -175,6 +188,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.Btn_Filter);
             this.panel2.Controls.Add(this.dateTimePicker4);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.dateTimePicker1);
@@ -186,9 +200,42 @@
             this.panel2.Size = new System.Drawing.Size(937, 357);
             this.panel2.TabIndex = 21;
             // 
+            // Btn_Filter
+            // 
+            this.Btn_Filter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
+            this.Btn_Filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Filter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Btn_Filter.Location = new System.Drawing.Point(821, 40);
+            this.Btn_Filter.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Filter.Name = "Btn_Filter";
+            this.Btn_Filter.Size = new System.Drawing.Size(98, 38);
+            this.Btn_Filter.TabIndex = 27;
+            this.Btn_Filter.Text = "Filter";
+            this.Btn_Filter.UseVisualStyleBackColor = false;
+            this.Btn_Filter.Click += new System.EventHandler(this.Btn_Filter_Click);
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CalendarTitleBackColor = System.Drawing.Color.Azure;
+            this.dateTimePicker4.CustomFormat = "dd/mm/yyyy";
+            this.dateTimePicker4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(632, 43);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(176, 27);
+            this.dateTimePicker4.TabIndex = 26;
+            // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idtranksaksiDataGridViewTextBoxColumn,
+            this.notranksaksiDataGridViewTextBoxColumn,
+            this.tgltranksaksiDataGridViewTextBoxColumn,
+            this.namakasirDataGridViewTextBoxColumn,
+            this.totalbayarDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tbltranksaksiBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -197,13 +244,23 @@
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // tbltranksaksiBindingSource
+            // 
+            this.tbltranksaksiBindingSource.DataMember = "tbl_tranksaksi";
+            this.tbltranksaksiBindingSource.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Azure;
             this.dateTimePicker1.CustomFormat = "dd/mm/yyyy";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(514, 42);
+            this.dateTimePicker1.Location = new System.Drawing.Point(422, 43);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(176, 27);
             this.dateTimePicker1.TabIndex = 24;
@@ -222,7 +279,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(721, 9);
+            this.label4.Location = new System.Drawing.Point(629, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 16);
             this.label4.TabIndex = 23;
@@ -231,7 +288,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(511, 9);
+            this.label3.Location = new System.Drawing.Point(419, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 16);
             this.label3.TabIndex = 22;
@@ -250,22 +307,24 @@
             this.Btn_Generate.TabIndex = 8;
             this.Btn_Generate.Text = "Generate";
             this.Btn_Generate.UseVisualStyleBackColor = false;
+            this.Btn_Generate.Click += new System.EventHandler(this.Btn_Generate_Click);
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(363, 522);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Omset";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(888, 235);
             this.chart1.TabIndex = 22;
             this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // dateTimePicker3
             // 
@@ -275,16 +334,50 @@
             this.dateTimePicker3.TabIndex = 23;
             this.dateTimePicker3.Value = new System.DateTime(2024, 8, 7, 0, 0, 0, 0);
             // 
-            // dateTimePicker4
+            // tbl_tranksaksiTableAdapter
             // 
-            this.dateTimePicker4.CalendarTitleBackColor = System.Drawing.Color.Azure;
-            this.dateTimePicker4.CustomFormat = "dd/mm/yyyy";
-            this.dateTimePicker4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(724, 42);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(176, 27);
-            this.dateTimePicker4.TabIndex = 26;
+            this.tbl_tranksaksiTableAdapter.ClearBeforeFill = true;
+            // 
+            // idtranksaksiDataGridViewTextBoxColumn
+            // 
+            this.idtranksaksiDataGridViewTextBoxColumn.DataPropertyName = "id_tranksaksi";
+            this.idtranksaksiDataGridViewTextBoxColumn.HeaderText = "id_tranksaksi";
+            this.idtranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idtranksaksiDataGridViewTextBoxColumn.Name = "idtranksaksiDataGridViewTextBoxColumn";
+            this.idtranksaksiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idtranksaksiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // notranksaksiDataGridViewTextBoxColumn
+            // 
+            this.notranksaksiDataGridViewTextBoxColumn.DataPropertyName = "no_tranksaksi";
+            this.notranksaksiDataGridViewTextBoxColumn.HeaderText = "no_tranksaksi";
+            this.notranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.notranksaksiDataGridViewTextBoxColumn.Name = "notranksaksiDataGridViewTextBoxColumn";
+            this.notranksaksiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tgltranksaksiDataGridViewTextBoxColumn
+            // 
+            this.tgltranksaksiDataGridViewTextBoxColumn.DataPropertyName = "tgl_tranksaksi";
+            this.tgltranksaksiDataGridViewTextBoxColumn.HeaderText = "tgl_tranksaksi";
+            this.tgltranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tgltranksaksiDataGridViewTextBoxColumn.Name = "tgltranksaksiDataGridViewTextBoxColumn";
+            this.tgltranksaksiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // namakasirDataGridViewTextBoxColumn
+            // 
+            this.namakasirDataGridViewTextBoxColumn.DataPropertyName = "nama_kasir";
+            this.namakasirDataGridViewTextBoxColumn.HeaderText = "nama_kasir";
+            this.namakasirDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.namakasirDataGridViewTextBoxColumn.Name = "namakasirDataGridViewTextBoxColumn";
+            this.namakasirDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalbayarDataGridViewTextBoxColumn
+            // 
+            this.totalbayarDataGridViewTextBoxColumn.DataPropertyName = "total_bayar";
+            this.totalbayarDataGridViewTextBoxColumn.HeaderText = "total_bayar";
+            this.totalbayarDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalbayarDataGridViewTextBoxColumn.Name = "totalbayarDataGridViewTextBoxColumn";
+            this.totalbayarDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormLaporan
             // 
@@ -300,12 +393,15 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormLaporan";
             this.Text = "Laporan";
+            this.Load += new System.EventHandler(this.FormLaporan_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbltranksaksiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,5 +429,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private FOODXYZDataSet fOODXYZDataSet;
+        private System.Windows.Forms.BindingSource tbltranksaksiBindingSource;
+        private FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter tbl_tranksaksiTableAdapter;
+        private System.Windows.Forms.Button Btn_Filter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtranksaksiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notranksaksiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgltranksaksiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namakasirDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalbayarDataGridViewTextBoxColumn;
     }
 }
