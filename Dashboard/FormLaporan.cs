@@ -102,6 +102,10 @@ namespace Dashboard
         {
             conn.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
 
+            Login form = new Login();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
         }
 
         private void showDGV()

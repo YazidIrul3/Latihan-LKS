@@ -34,7 +34,7 @@ namespace Dashboard
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_log' table. You can move, or remove it, as needed.
-            this.tbl_logTableAdapter.Fill(this.fOODXYZDataSet.tbl_log);
+           
 
         }
 
@@ -78,6 +78,34 @@ namespace Dashboard
         {
             koneksi.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
 
+            Login form = new Login();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_AutoSizeColumnsModeChanged(object sender, DataGridViewAutoSizeColumnsModeEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_AutoSizeColumnModeChanged(object sender, DataGridViewAutoSizeColumnModeEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_BindingContextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
         }
 
         private void showDGV()

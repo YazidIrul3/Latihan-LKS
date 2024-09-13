@@ -46,15 +46,15 @@
             this.Btn_Filter = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbllogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.label5 = new System.Windows.Forms.Label();
             this.tbl_logTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_logTableAdapter();
-            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -201,10 +201,11 @@
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(336, 206);
+            this.dateTimePicker1.Location = new System.Drawing.Point(336, 198);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
             this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -257,6 +258,43 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(819, 314);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.AutoSizeColumnsModeChanged += new System.Windows.Forms.DataGridViewAutoSizeColumnsModeEventHandler(this.dataGridView1_AutoSizeColumnsModeChanged);
+            this.dataGridView1.AutoSizeColumnModeChanged += new System.Windows.Forms.DataGridViewAutoSizeColumnModeEventHandler(this.dataGridView1_AutoSizeColumnModeChanged);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.BindingContextChanged += new System.EventHandler(this.dataGridView1_BindingContextChanged);
+            // 
+            // idlogDataGridViewTextBoxColumn
+            // 
+            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
+            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
+            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
+            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idlogDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // waktuDataGridViewTextBoxColumn
+            // 
+            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
+            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
+            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
+            this.waktuDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // aktivitasDataGridViewTextBoxColumn
+            // 
+            this.aktivitasDataGridViewTextBoxColumn.DataPropertyName = "aktivitas";
+            this.aktivitasDataGridViewTextBoxColumn.HeaderText = "aktivitas";
+            this.aktivitasDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aktivitasDataGridViewTextBoxColumn.Name = "aktivitasDataGridViewTextBoxColumn";
+            this.aktivitasDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // iduserDataGridViewTextBoxColumn
+            // 
+            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
+            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
+            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
+            this.iduserDataGridViewTextBoxColumn.Width = 125;
             // 
             // tbllogBindingSource
             // 
@@ -287,39 +325,6 @@
             // tbl_logTableAdapter
             // 
             this.tbl_logTableAdapter.ClearBeforeFill = true;
-            // 
-            // iduserDataGridViewTextBoxColumn
-            // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            this.iduserDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // aktivitasDataGridViewTextBoxColumn
-            // 
-            this.aktivitasDataGridViewTextBoxColumn.DataPropertyName = "aktivitas";
-            this.aktivitasDataGridViewTextBoxColumn.HeaderText = "aktivitas";
-            this.aktivitasDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.aktivitasDataGridViewTextBoxColumn.Name = "aktivitasDataGridViewTextBoxColumn";
-            this.aktivitasDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // waktuDataGridViewTextBoxColumn
-            // 
-            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
-            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
-            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
-            this.waktuDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // idlogDataGridViewTextBoxColumn
-            // 
-            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
-            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
-            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
-            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idlogDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormAdmin
             // 

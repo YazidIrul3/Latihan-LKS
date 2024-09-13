@@ -14,10 +14,19 @@ namespace Dashboard
     public partial class FormGudang : Form
     {
         int id;
-        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LKSMart; Integrated Security=True";
-        public FormGudang()
+        string connectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
+        Koneksi conn = new Koneksi();
+        DataTable dt = new DataTable();
+        string userId, tipeUser;
+        public FormGudang(string userId,string TipeUser)
         {
             InitializeComponent();
+            this.userId = userId.ToString();
+            this.tipeUser = TipeUser.ToString();
+            dgv();
+
+            Btn_Edit.Enabled = false;
+            Btn_Hapus.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,7 +36,8 @@ namespace Dashboard
 
         private void FormGudang_Load(object sender, EventArgs e)
         {
-            ClassConnection.GetConnection();
+            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_barang' table. You can move, or remove it, as needed.
+            this.tbl_barangTableAdapter1.Fill(this.fOODXYZDataSet.tbl_barang);
             // TODO: This line of code loads data into the 'lKSMartDataSet1.tbl_barang' table. You can move, or remove it, as needed.
             this.tbl_barangTableAdapter.Fill(this.lKSMartDataSet1.tbl_barang);
 
@@ -35,44 +45,22 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            if (Txt_ExpireDate.Text == "" || Txt_HargaSatuan.Text == "" || Txt_JumlahBarang.Text == "" || Txt_KodeBarang.Text == "" || Txt_NamaBarang.Text == "" || Txt_Satuan.Text == "")
+            if (expire_date.Text == "" || Txt_HargaSatuan.Text == "" || Txt_JumlahBarang.Text == "" || Txt_KodeBarang.Text == "" || Txt_NamaBarang.Text == "" || Txt_Satuan.Text == "")
             {
                 MessageBox.Show("Data ada yang belum di isi");
             } else
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand cmd = new SqlCommand("insert into tbl_barang(kode_barang,nama_barang,expired_date,jumlah_barang,satuan,harga_satuan) values (@kode_barang,@nama_barang,@expired_date,@jumlah_barang,@satuan,@harga_satuan)");
-
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@kode_barang",Txt_KodeBarang.Text);
-                    cmd.Parameters.AddWithValue("@nama_barang",Txt_NamaBarang.Text);
-                    cmd.Parameters.AddWithValue("@expired_date",Txt_ExpireDate.Value);
-                    cmd.Parameters.AddWithValue("@jumlah_barang",Txt_JumlahBarang.Text);
-                    cmd.Parameters.AddWithValue("@satuan",Txt_Satuan.Text);
-                    cmd.Parameters.AddWithValue("@harga_satuan",Txt_HargaSatuan.Text);
-
-                    try
+                try
                     {
-                        cmd.Connection = connection;
-                        connection.Open();
-                        cmd.ExecuteReader();
-
+                        conn.cud("insert into tbl_barang (kode_barang,nama_barang,expired_date,jumlah_barang,satuan,harga_satuan) values ('" +Txt_KodeBarang.Text + "','" + Txt_NamaBarang.Text + "','" + expire_date.Value.ToString("yyyy-MM-dd") + "','" + Txt_JumlahBarang.Text + "','" + Txt_Satuan.Text + "','" + Txt_HargaSatuan.Text + "')");
                         MessageBox.Show("Data berhasil ditambahkan");
-
-                        Txt_ExpireDate.Text = "";
-                        Txt_KodeBarang.Text = "";
-                        Txt_NamaBarang.Text = "";
-                        Txt_Satuan.Text = "";
-                        Txt_HargaSatuan.Text = "";
-                        Txt_JumlahBarang.Text = "";
+                        refreshData();
                     } catch
                     {
                         MessageBox.Show("Data gagal ditambahkan");
 
                     }
                 }
-            }
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -82,63 +70,33 @@ namespace Dashboard
 
         private void Btn_Hapus_Click(object sender, EventArgs e)
         {
-            using(SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand("delete from tbl_barang where id_barang=@id");
-                cmd.CommandType = CommandType.Text;
-
-                cmd.Parameters.AddWithValue("@id", id);
 
                 try
                 {
-                    cmd.Connection = connection;
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-
+                    conn.cud("delete from tbl_barang where id_barang='" + id + "'");
                     MessageBox.Show("Data berhasil dihapus");
+                    refreshData();
                 } catch
                 {
                     MessageBox.Show("Data gagal dihapus");
                 }
             }
-        }
 
         private void Btn_Edit_Click(object sender, EventArgs e)
         {
 
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (Txt_ExpireDate.Text == "" || Txt_HargaSatuan.Text == "" || Txt_JumlahBarang.Text == "" || Txt_KodeBarang.Text == "" || Txt_NamaBarang.Text == "" || Txt_Satuan.Text == "")
+                if (expire_date.Text == "" || Txt_HargaSatuan.Text == "" || Txt_JumlahBarang.Text == "" || Txt_KodeBarang.Text == "" || Txt_NamaBarang.Text == "" || Txt_Satuan.Text == "")
                 {
                     MessageBox.Show("Data ada yang belum di isi");
                 } else
                 {
-                    SqlCommand cmd = new SqlCommand("update tbl_barang set kode_barang=@kode_barang, nama_barang=@nama_barang, expired_date=@expired_date, jumlah_barang=@jumlah_barang, satuan=@satuan, harga_satuan=@harga_satuan where id_barang=@id");
-
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Parameters.AddWithValue("@kode_barang", Txt_KodeBarang.Text);
-                    cmd.Parameters.AddWithValue("@nama_barang", Txt_NamaBarang.Text);
-                    cmd.Parameters.AddWithValue("@expired_date", Txt_ExpireDate.Value);
-                    cmd.Parameters.AddWithValue("@jumlah_barang", Txt_JumlahBarang.Text);
-                    cmd.Parameters.AddWithValue("@satuan", Txt_Satuan.Text);
-                    cmd.Parameters.AddWithValue("@harga_satuan", Txt_HargaSatuan.Text);
-                    
                     try
                     {
-                        cmd.Connection = connection;
-                        connection.Open();
-                        cmd.ExecuteNonQuery();
-
+                        conn.cud("update tbl_barang set kode_barang='"+Txt_KodeBarang.Text+"', nama_barang='"+Txt_NamaBarang.Text+"', expired_date='"+expire_date.Value.ToString("yyyy-MM-dd")+"', jumlah_barang='"+Txt_JumlahBarang.Text+"', satuan='"+Txt_Satuan.Text+"', harga_satuan='"+Txt_HargaSatuan.Text+"' where id_barang='"+id+"'");
                         MessageBox.Show("Data berhasil diedit");
-
-                        Txt_KodeBarang.Text = "";
-                        Txt_NamaBarang.Text = "";
-                        Txt_ExpireDate.Text = "";
-                        Txt_Satuan.Text = "";
-                        Txt_HargaSatuan.Text = "";
-                        Txt_JumlahBarang.Text = "";
+                        refreshData();
                     } catch
                     {
                         MessageBox.Show("Data gagal diedit");
@@ -154,15 +112,119 @@ namespace Dashboard
             id = Convert.ToInt16(row.Cells[0].Value);
                                    
             Txt_KodeBarang.Text = row.Cells[1].Value.ToString();
-            Txt_JumlahBarang.Text = row.Cells[2].Value.ToString();
-            Txt_NamaBarang.Text = row.Cells[3].Value.ToString();
-            Txt_Satuan.Text = row.Cells[4].Value.ToString();
+            Txt_NamaBarang.Text = row.Cells[2].Value.ToString();
+            expire_date.Value = Convert.ToDateTime(row.Cells[3].Value);
+            Txt_JumlahBarang.Text = row.Cells[4].Value.ToString();
+            Txt_Satuan.Text = row.Cells[5].Value.ToString();
             Txt_HargaSatuan.Text = row.Cells[6].Value.ToString();
+
+            Btn_Hapus.Enabled = true;
+            Btn_Edit.Enabled = true;
+            Btn_Tambah.Enabled = false;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void refreshData()
+        {
+            Txt_KodeBarang.Text = "";
+            Txt_NamaBarang.Text = "";
+            Txt_Satuan.Text = "";
+            Txt_HargaSatuan.Text = "";
+            Txt_JumlahBarang.Text = "";
+            FormGudang form = new FormGudang(userId,tipeUser);
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            conn.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
+
+            Login form = new Login();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void dgv()
+        {
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    dt.Clear();
+                    dataGridView2.Refresh();
+
+                    SqlCommand cmd = new SqlCommand("select * from tbl_barang");
+                    cmd.Connection = connection;
+
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+
+                    dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView2.Columns[0].HeaderText = "Id Barang";
+                    dataGridView2.Columns[1].HeaderText = "Kode Barang";
+                    dataGridView2.Columns[2].HeaderText = "Nama Barang";
+                    dataGridView2.Columns[3].HeaderText = "Expired Date";
+                    dataGridView2.Columns[4].HeaderText = "Jumlah Barang";
+                    dataGridView2.Columns[5].HeaderText = "Satuan";
+                    dataGridView2.Columns[6].HeaderText = "Harga Satuan";
+
+                    dataGridView2.DataSource = dt;
+                } catch(Exception ex) {
+                    MessageBox.Show(ex.Message.ToString());
+                } finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            searchData();
+        }
+
+        private void searchData()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    dt.Clear();
+                    dataGridView2.Refresh();
+
+                    SqlCommand cmd = new SqlCommand("select * from tbl_barang where kode_barang like '"+ Txt_Search.Text +"%' or nama_barang like '"+Txt_Search.Text+"%'");
+                    cmd.Connection = connection;
+
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+
+                    dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView2.Columns[0].HeaderText = "Id Barang";
+                    dataGridView2.Columns[1].HeaderText = "Kode Barang";
+                    dataGridView2.Columns[2].HeaderText = "Nama Barang";
+                    dataGridView2.Columns[3].HeaderText = "Expired Date";
+                    dataGridView2.Columns[4].HeaderText = "Jumlah Barang";
+                    dataGridView2.Columns[5].HeaderText = "Satuan";
+                    dataGridView2.Columns[6].HeaderText = "Harga Satuan";
+
+                    dataGridView2.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

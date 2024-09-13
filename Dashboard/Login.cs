@@ -21,8 +21,8 @@ namespace Dashboard
         public Login()
         {
             InitializeComponent();
-            Txt_Username.Text = "adam55";
-            Txt_Password.Text = "12345";
+            Txt_Username.Text = "pandu";
+            Txt_Password.Text = "12345678";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Dashboard
 
                         if(tipeUser == "Gudang")
                         {
-                            FormGudang formGudang = new FormGudang();
+                            FormGudang formGudang = new FormGudang(userId,tipeUser);
                             this.Hide();
                             formGudang.ShowDialog();
                             this.Close();

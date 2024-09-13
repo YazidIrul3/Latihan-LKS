@@ -16,12 +16,18 @@ namespace Dashboard
         int id;
         string tipeUser, userId;
         Koneksi conn = new Koneksi();
+        string connectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
+        DataTable dt = new DataTable();
+
 
         public FormUser(string tipeUser,string userId)
         {
             this.tipeUser = tipeUser.ToString();
             this.userId = userId.ToString();
             InitializeComponent();
+            dgv();
+            Btn_Edit.Enabled = false;
+            Btn_Hapus.Enabled = false;
         }
 
         private void Btn_LogActivity_Click(object sender, EventArgs e)
@@ -140,11 +146,21 @@ namespace Dashboard
             Txt_Username.Text = row.Cells[4].Value.ToString();
             Txt_Telepon.Text = row.Cells[5].Value.ToString();
             Txt_Password.Text = row.Cells[6].Value.ToString();
+
+            Btn_Edit.Enabled = true;
+            Btn_Hapus.Enabled = true;
+            Btn_Tambah.Enabled = false;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             conn.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
+
+            Login form = new Login();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
         }
 
         private void dataRefresh()
@@ -160,6 +176,85 @@ namespace Dashboard
             FormUser form = new FormUser(tipeUser, userId);
             form.ShowDialog();
             this.Close();
+        }
+
+        private void dgv()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    dt.Clear();
+                    dataGridView1.Refresh();
+
+                    SqlCommand cmd = new SqlCommand("select * from tbl_user");
+                    cmd.Connection = connection;
+
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.Columns[0].HeaderText = "Id User";
+                    dataGridView1.Columns[1].HeaderText = "Tipe User";
+                    dataGridView1.Columns[2].HeaderText = "Nama User";
+                    dataGridView1.Columns[3].HeaderText = "Alamat";
+                    dataGridView1.Columns[4].HeaderText = "Username";
+                    dataGridView1.Columns[5].HeaderText = "Telepon";
+                    dataGridView1.Columns[6].HeaderText = "Password";
+
+                    dataGridView1.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            searchData();
+        }
+
+        private void searchData()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    dt.Clear();
+                    dataGridView1.Refresh();
+
+                    SqlCommand cmd = new SqlCommand("select * from tbl_user where nama like '" + Txt_Search.Text + "%' or username like '" + Txt_Search.Text + "%'");
+                    cmd.Connection = connection;
+
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.Columns[0].HeaderText = "Id User";
+                    dataGridView1.Columns[1].HeaderText = "Tipe User";
+                    dataGridView1.Columns[2].HeaderText = "Nama User";
+                    dataGridView1.Columns[3].HeaderText = "Alamat";
+                    dataGridView1.Columns[4].HeaderText = "Username";
+                    dataGridView1.Columns[5].HeaderText = "Telepon";
+                    dataGridView1.Columns[6].HeaderText = "Password";
+
+                    dataGridView1.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

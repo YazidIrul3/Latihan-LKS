@@ -64,12 +64,18 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.tbl_barangTableAdapter = new Dashboard.LKSMartDataSet1TableAdapters.tbl_barangTableAdapter();
-            this.Txt_ExpireDate = new System.Windows.Forms.DateTimePicker();
+            this.expire_date = new System.Windows.Forms.DateTimePicker();
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
+            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_barangTableAdapter1 = new Dashboard.FOODXYZDataSetTableAdapters.tbl_barangTableAdapter();
+            this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,6 +136,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Logout";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -308,6 +315,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.Txt_Search);
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Controls.Add(this.Btn_Search);
             this.panel2.Controls.Add(this.label12);
@@ -328,7 +336,7 @@
             this.jumlahbarangDataGridViewTextBoxColumn,
             this.satuanDataGridViewTextBoxColumn,
             this.hargasatuanDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.tblbarangBindingSource;
+            this.dataGridView2.DataSource = this.tblbarangBindingSource1;
             this.dataGridView2.Location = new System.Drawing.Point(-1, 80);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -417,6 +425,7 @@
             this.Btn_Search.TabIndex = 21;
             this.Btn_Search.Text = "Search";
             this.Btn_Search.UseVisualStyleBackColor = false;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // label12
             // 
@@ -433,24 +442,48 @@
             // 
             this.tbl_barangTableAdapter.ClearBeforeFill = true;
             // 
-            // Txt_ExpireDate
+            // expire_date
             // 
-            this.Txt_ExpireDate.CalendarTitleBackColor = System.Drawing.Color.Azure;
-            this.Txt_ExpireDate.CustomFormat = "dd/mm/yyyy";
-            this.Txt_ExpireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_ExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.Txt_ExpireDate.Location = new System.Drawing.Point(508, 297);
-            this.Txt_ExpireDate.Name = "Txt_ExpireDate";
-            this.Txt_ExpireDate.Size = new System.Drawing.Size(358, 27);
-            this.Txt_ExpireDate.TabIndex = 28;
-            this.Txt_ExpireDate.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.expire_date.CalendarTitleBackColor = System.Drawing.Color.Azure;
+            this.expire_date.CustomFormat = "yyyy/MM/dd";
+            this.expire_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expire_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.expire_date.Location = new System.Drawing.Point(508, 297);
+            this.expire_date.Name = "expire_date";
+            this.expire_date.Size = new System.Drawing.Size(358, 27);
+            this.expire_date.TabIndex = 28;
+            this.expire_date.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblbarangBindingSource1
+            // 
+            this.tblbarangBindingSource1.DataMember = "tbl_barang";
+            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbl_barangTableAdapter1
+            // 
+            this.tbl_barangTableAdapter1.ClearBeforeFill = true;
+            // 
+            // Txt_Search
+            // 
+            this.Txt_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Txt_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Search.Location = new System.Drawing.Point(604, 16);
+            this.Txt_Search.Name = "Txt_Search";
+            this.Txt_Search.Size = new System.Drawing.Size(180, 34);
+            this.Txt_Search.TabIndex = 29;
+            this.Txt_Search.Text = "";
             // 
             // FormGudang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1292, 771);
-            this.Controls.Add(this.Txt_ExpireDate);
+            this.Controls.Add(this.expire_date);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Btn_Hapus);
             this.Controls.Add(this.Btn_Edit);
@@ -479,6 +512,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,6 +556,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn jumlahbarangDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn satuanDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hargasatuanDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DateTimePicker Txt_ExpireDate;
+        private System.Windows.Forms.DateTimePicker expire_date;
+        private FOODXYZDataSet fOODXYZDataSet;
+        private System.Windows.Forms.BindingSource tblbarangBindingSource1;
+        private FOODXYZDataSetTableAdapters.tbl_barangTableAdapter tbl_barangTableAdapter1;
+        private System.Windows.Forms.RichTextBox Txt_Search;
     }
 }
