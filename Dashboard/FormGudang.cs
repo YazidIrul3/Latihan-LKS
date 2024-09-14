@@ -167,6 +167,7 @@ namespace Dashboard
                     adp.Fill(dt);
 
                     dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView2.DataSource = dt;
                     dataGridView2.Columns[0].HeaderText = "Id Barang";
                     dataGridView2.Columns[1].HeaderText = "Kode Barang";
                     dataGridView2.Columns[2].HeaderText = "Nama Barang";
@@ -175,7 +176,6 @@ namespace Dashboard
                     dataGridView2.Columns[5].HeaderText = "Satuan";
                     dataGridView2.Columns[6].HeaderText = "Harga Satuan";
 
-                    dataGridView2.DataSource = dt;
                 } catch(Exception ex) {
                     MessageBox.Show(ex.Message.ToString());
                 } finally
@@ -188,6 +188,11 @@ namespace Dashboard
         private void Btn_Search_Click(object sender, EventArgs e)
         {
             searchData();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void searchData()
@@ -204,6 +209,7 @@ namespace Dashboard
 
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     adp.Fill(dt);
+                    dataGridView2.DataSource = dt;
 
                     dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dataGridView2.Columns[0].HeaderText = "Id Barang";
@@ -214,7 +220,6 @@ namespace Dashboard
                     dataGridView2.Columns[5].HeaderText = "Satuan";
                     dataGridView2.Columns[6].HeaderText = "Harga Satuan";
 
-                    dataGridView2.DataSource = dt;
                 }
                 catch (Exception ex)
                 {

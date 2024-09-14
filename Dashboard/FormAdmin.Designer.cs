@@ -45,23 +45,21 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.Btn_Filter = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbllogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.label5 = new System.Windows.Forms.Label();
             this.tbl_logTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_logTableAdapter();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbllogBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -241,60 +239,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(844, 384);
             this.panel2.TabIndex = 8;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idlogDataGridViewTextBoxColumn,
-            this.waktuDataGridViewTextBoxColumn,
-            this.aktivitasDataGridViewTextBoxColumn,
-            this.iduserDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tbllogBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(819, 314);
-            this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.AutoSizeColumnsModeChanged += new System.Windows.Forms.DataGridViewAutoSizeColumnsModeEventHandler(this.dataGridView1_AutoSizeColumnsModeChanged);
-            this.dataGridView1.AutoSizeColumnModeChanged += new System.Windows.Forms.DataGridViewAutoSizeColumnModeEventHandler(this.dataGridView1_AutoSizeColumnModeChanged);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.BindingContextChanged += new System.EventHandler(this.dataGridView1_BindingContextChanged);
-            // 
-            // idlogDataGridViewTextBoxColumn
-            // 
-            this.idlogDataGridViewTextBoxColumn.DataPropertyName = "id_log";
-            this.idlogDataGridViewTextBoxColumn.HeaderText = "id_log";
-            this.idlogDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idlogDataGridViewTextBoxColumn.Name = "idlogDataGridViewTextBoxColumn";
-            this.idlogDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idlogDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // waktuDataGridViewTextBoxColumn
-            // 
-            this.waktuDataGridViewTextBoxColumn.DataPropertyName = "waktu";
-            this.waktuDataGridViewTextBoxColumn.HeaderText = "waktu";
-            this.waktuDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.waktuDataGridViewTextBoxColumn.Name = "waktuDataGridViewTextBoxColumn";
-            this.waktuDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // aktivitasDataGridViewTextBoxColumn
-            // 
-            this.aktivitasDataGridViewTextBoxColumn.DataPropertyName = "aktivitas";
-            this.aktivitasDataGridViewTextBoxColumn.HeaderText = "aktivitas";
-            this.aktivitasDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.aktivitasDataGridViewTextBoxColumn.Name = "aktivitasDataGridViewTextBoxColumn";
-            this.aktivitasDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // iduserDataGridViewTextBoxColumn
-            // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            this.iduserDataGridViewTextBoxColumn.Width = 125;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // tbllogBindingSource
             // 
@@ -326,6 +271,23 @@
             // 
             this.tbl_logTableAdapter.ClearBeforeFill = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(25, 76);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(770, 220);
+            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // tbllogBindingSource1
+            // 
+            this.tbllogBindingSource1.DataMember = "tbl_log";
+            this.tbllogBindingSource1.DataSource = this.fOODXYZDataSetBindingSource;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -348,10 +310,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbllogBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +335,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button Btn_Filter;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -380,10 +342,8 @@
         private FOODXYZDataSet fOODXYZDataSet;
         private System.Windows.Forms.BindingSource tbllogBindingSource;
         private FOODXYZDataSetTableAdapters.tbl_logTableAdapter tbl_logTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idlogDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waktuDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aktivitasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iduserDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource tbllogBindingSource1;
     }
 }
 

@@ -59,9 +59,7 @@ namespace Dashboard
 
         private void FormLaporan_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_tranksaksi' table. You can move, or remove it, as needed.
-            this.tbl_tranksaksiTableAdapter.Fill(this.fOODXYZDataSet.tbl_tranksaksi);
-
+          
         }
 
         private void DGV()
@@ -70,6 +68,7 @@ namespace Dashboard
             dataGridView1.Refresh();
 
             showDGV();
+            dataGridView1.DataSource = dt;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].HeaderText = "No Transaksi";
             dataGridView1.Columns[1].HeaderText = "Tanggal Transaksi";
@@ -77,7 +76,6 @@ namespace Dashboard
             dataGridView1.Columns[3].HeaderText = "Nama Kasir";
             dataGridView1.Columns[4].HeaderText = "Nama Pelanggan";
 
-            dataGridView1.DataSource = dt;
         }
 
         private void Btn_Filter_Click(object sender, EventArgs e)

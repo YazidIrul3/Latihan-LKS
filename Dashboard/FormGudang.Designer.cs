@@ -51,31 +51,24 @@
             this.Btn_Edit = new System.Windows.Forms.Button();
             this.Btn_Tambah = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.idbarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kodebarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namabarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expireddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlahbarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hargasatuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lKSMartDataSet1 = new Dashboard.LKSMartDataSet1();
+            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.Btn_Search = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lKSMartDataSet1 = new Dashboard.LKSMartDataSet1();
             this.tbl_barangTableAdapter = new Dashboard.LKSMartDataSet1TableAdapters.tbl_barangTableAdapter();
             this.expire_date = new System.Windows.Forms.DateTimePicker();
-            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
-            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tbl_barangTableAdapter1 = new Dashboard.FOODXYZDataSetTableAdapters.tbl_barangTableAdapter();
-            this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -323,20 +316,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(934, 305);
             this.panel2.TabIndex = 26;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // Txt_Search
+            // 
+            this.Txt_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Txt_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Search.Location = new System.Drawing.Point(604, 16);
+            this.Txt_Search.Name = "Txt_Search";
+            this.Txt_Search.Size = new System.Drawing.Size(180, 34);
+            this.Txt_Search.TabIndex = 29;
+            this.Txt_Search.Text = "";
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idbarangDataGridViewTextBoxColumn,
-            this.kodebarangDataGridViewTextBoxColumn,
-            this.namabarangDataGridViewTextBoxColumn,
-            this.expireddateDataGridViewTextBoxColumn,
-            this.jumlahbarangDataGridViewTextBoxColumn,
-            this.satuanDataGridViewTextBoxColumn,
-            this.hargasatuanDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.tblbarangBindingSource1;
             this.dataGridView2.Location = new System.Drawing.Point(-1, 80);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -346,72 +340,15 @@
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // idbarangDataGridViewTextBoxColumn
+            // tblbarangBindingSource1
             // 
-            this.idbarangDataGridViewTextBoxColumn.DataPropertyName = "id_barang";
-            this.idbarangDataGridViewTextBoxColumn.HeaderText = "id_barang";
-            this.idbarangDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idbarangDataGridViewTextBoxColumn.Name = "idbarangDataGridViewTextBoxColumn";
-            this.idbarangDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idbarangDataGridViewTextBoxColumn.Width = 125;
+            this.tblbarangBindingSource1.DataMember = "tbl_barang";
+            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSet;
             // 
-            // kodebarangDataGridViewTextBoxColumn
+            // fOODXYZDataSet
             // 
-            this.kodebarangDataGridViewTextBoxColumn.DataPropertyName = "kode_barang";
-            this.kodebarangDataGridViewTextBoxColumn.HeaderText = "kode_barang";
-            this.kodebarangDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.kodebarangDataGridViewTextBoxColumn.Name = "kodebarangDataGridViewTextBoxColumn";
-            this.kodebarangDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // namabarangDataGridViewTextBoxColumn
-            // 
-            this.namabarangDataGridViewTextBoxColumn.DataPropertyName = "nama_barang";
-            this.namabarangDataGridViewTextBoxColumn.HeaderText = "nama_barang";
-            this.namabarangDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.namabarangDataGridViewTextBoxColumn.Name = "namabarangDataGridViewTextBoxColumn";
-            this.namabarangDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // expireddateDataGridViewTextBoxColumn
-            // 
-            this.expireddateDataGridViewTextBoxColumn.DataPropertyName = "expired_date";
-            this.expireddateDataGridViewTextBoxColumn.HeaderText = "expired_date";
-            this.expireddateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.expireddateDataGridViewTextBoxColumn.Name = "expireddateDataGridViewTextBoxColumn";
-            this.expireddateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // jumlahbarangDataGridViewTextBoxColumn
-            // 
-            this.jumlahbarangDataGridViewTextBoxColumn.DataPropertyName = "jumlah_barang";
-            this.jumlahbarangDataGridViewTextBoxColumn.HeaderText = "jumlah_barang";
-            this.jumlahbarangDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.jumlahbarangDataGridViewTextBoxColumn.Name = "jumlahbarangDataGridViewTextBoxColumn";
-            this.jumlahbarangDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // satuanDataGridViewTextBoxColumn
-            // 
-            this.satuanDataGridViewTextBoxColumn.DataPropertyName = "satuan";
-            this.satuanDataGridViewTextBoxColumn.HeaderText = "satuan";
-            this.satuanDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.satuanDataGridViewTextBoxColumn.Name = "satuanDataGridViewTextBoxColumn";
-            this.satuanDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // hargasatuanDataGridViewTextBoxColumn
-            // 
-            this.hargasatuanDataGridViewTextBoxColumn.DataPropertyName = "harga_satuan";
-            this.hargasatuanDataGridViewTextBoxColumn.HeaderText = "harga_satuan";
-            this.hargasatuanDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.hargasatuanDataGridViewTextBoxColumn.Name = "hargasatuanDataGridViewTextBoxColumn";
-            this.hargasatuanDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tblbarangBindingSource
-            // 
-            this.tblbarangBindingSource.DataMember = "tbl_barang";
-            this.tblbarangBindingSource.DataSource = this.lKSMartDataSet1;
-            // 
-            // lKSMartDataSet1
-            // 
-            this.lKSMartDataSet1.DataSetName = "LKSMartDataSet1";
-            this.lKSMartDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Btn_Search
             // 
@@ -438,6 +375,16 @@
             this.label12.TabIndex = 9;
             this.label12.Text = "Tabel User";
             // 
+            // tblbarangBindingSource
+            // 
+            this.tblbarangBindingSource.DataMember = "tbl_barang";
+            this.tblbarangBindingSource.DataSource = this.lKSMartDataSet1;
+            // 
+            // lKSMartDataSet1
+            // 
+            this.lKSMartDataSet1.DataSetName = "LKSMartDataSet1";
+            this.lKSMartDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tbl_barangTableAdapter
             // 
             this.tbl_barangTableAdapter.ClearBeforeFill = true;
@@ -454,29 +401,9 @@
             this.expire_date.TabIndex = 28;
             this.expire_date.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // fOODXYZDataSet
-            // 
-            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
-            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblbarangBindingSource1
-            // 
-            this.tblbarangBindingSource1.DataMember = "tbl_barang";
-            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSet;
-            // 
             // tbl_barangTableAdapter1
             // 
             this.tbl_barangTableAdapter1.ClearBeforeFill = true;
-            // 
-            // Txt_Search
-            // 
-            this.Txt_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Txt_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Txt_Search.Location = new System.Drawing.Point(604, 16);
-            this.Txt_Search.Name = "Txt_Search";
-            this.Txt_Search.Size = new System.Drawing.Size(180, 34);
-            this.Txt_Search.TabIndex = 29;
-            this.Txt_Search.Text = "";
             // 
             // FormGudang
             // 
@@ -510,10 +437,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,13 +476,6 @@
         private LKSMartDataSet1 lKSMartDataSet1;
         private System.Windows.Forms.BindingSource tblbarangBindingSource;
         private LKSMartDataSet1TableAdapters.tbl_barangTableAdapter tbl_barangTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idbarangDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kodebarangDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namabarangDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expireddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jumlahbarangDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn satuanDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hargasatuanDataGridViewTextBoxColumn;
         private System.Windows.Forms.DateTimePicker expire_date;
         private FOODXYZDataSet fOODXYZDataSet;
         private System.Windows.Forms.BindingSource tblbarangBindingSource1;

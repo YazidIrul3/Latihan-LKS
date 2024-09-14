@@ -16,6 +16,7 @@ namespace Dashboard
     {
         string ConnectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
         DataTable dt = new DataTable();
+        SqlDataAdapter adp;
         string userId, tipeUser;
         Koneksi koneksi = new Koneksi();
         public FormAdmin(string tipeUser,string userId)
@@ -33,9 +34,7 @@ namespace Dashboard
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_log' table. You can move, or remove it, as needed.
-           
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,13 +64,14 @@ namespace Dashboard
             dataGridView1.Refresh();
 
             showDGV();
+            dataGridView1.DataSource = dt;
+
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].HeaderText = "Id LOG";
             dataGridView1.Columns[1].HeaderText = "Waktu";
             dataGridView1.Columns[2].HeaderText = "Username";
             dataGridView1.Columns[3].HeaderText = "Aktivitas";
 
-            dataGridView1.DataSource = dt;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -108,18 +108,27 @@ namespace Dashboard
         {
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void showDGV()
         {
             using(SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 try
                 {
-                    dt.Clear();
+                dt.Clear();
                 SqlCommand cmd = new SqlCommand("select tl.id_log,tl.waktu, tu.username ,tl.aktivitas from tbl_log as tl inner join tbl_user as tu on tl.id_user = tu.id_user where tl.waktu between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd")+ "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd")+"' ");
                 cmd.Connection = conn;
                 conn.Open();
-
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp = new SqlDataAdapter(cmd);
                 adp.Fill(dt);
                 } catch(Exception ex)
                 {

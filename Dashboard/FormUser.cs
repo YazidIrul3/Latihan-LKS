@@ -38,10 +38,7 @@ namespace Dashboard
 
         private void FormUser_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_user' table. You can move, or remove it, as needed.
-            this.tbl_userTableAdapter1.Fill(this.fOODXYZDataSet.tbl_user);
-            // TODO: This line of code loads data into the 'lKSMartDataSet.tbl_user' table. You can move, or remove it, as needed.
-            this.tbl_userTableAdapter.Fill(this.lKSMartDataSet.tbl_user);
+        
 
         }
 
@@ -192,6 +189,7 @@ namespace Dashboard
 
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     adp.Fill(dt);
+                    dataGridView1.DataSource = dt;
 
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dataGridView1.Columns[0].HeaderText = "Id User";
@@ -202,7 +200,6 @@ namespace Dashboard
                     dataGridView1.Columns[5].HeaderText = "Telepon";
                     dataGridView1.Columns[6].HeaderText = "Password";
 
-                    dataGridView1.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -234,6 +231,7 @@ namespace Dashboard
 
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     adp.Fill(dt);
+                    dataGridView1.DataSource = dt;
 
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dataGridView1.Columns[0].HeaderText = "Id User";
@@ -244,7 +242,6 @@ namespace Dashboard
                     dataGridView1.Columns[5].HeaderText = "Telepon";
                     dataGridView1.Columns[6].HeaderText = "Password";
 
-                    dataGridView1.DataSource = dt;
                 }
                 catch (Exception ex)
                 {

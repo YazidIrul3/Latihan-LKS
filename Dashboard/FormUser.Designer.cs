@@ -52,13 +52,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipeuserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alamatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teleponDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbluserBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.label9 = new System.Windows.Forms.Label();
@@ -343,17 +336,7 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iduserDataGridViewTextBoxColumn,
-            this.tipeuserDataGridViewTextBoxColumn,
-            this.namaDataGridViewTextBoxColumn,
-            this.alamatDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn,
-            this.teleponDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tbluserBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(82, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -363,63 +346,6 @@
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // iduserDataGridViewTextBoxColumn
-            // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            this.iduserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iduserDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tipeuserDataGridViewTextBoxColumn
-            // 
-            this.tipeuserDataGridViewTextBoxColumn.DataPropertyName = "tipe_user";
-            this.tipeuserDataGridViewTextBoxColumn.HeaderText = "tipe_user";
-            this.tipeuserDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tipeuserDataGridViewTextBoxColumn.Name = "tipeuserDataGridViewTextBoxColumn";
-            this.tipeuserDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // namaDataGridViewTextBoxColumn
-            // 
-            this.namaDataGridViewTextBoxColumn.DataPropertyName = "nama";
-            this.namaDataGridViewTextBoxColumn.HeaderText = "nama";
-            this.namaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.namaDataGridViewTextBoxColumn.Name = "namaDataGridViewTextBoxColumn";
-            this.namaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // alamatDataGridViewTextBoxColumn
-            // 
-            this.alamatDataGridViewTextBoxColumn.DataPropertyName = "alamat";
-            this.alamatDataGridViewTextBoxColumn.HeaderText = "alamat";
-            this.alamatDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.alamatDataGridViewTextBoxColumn.Name = "alamatDataGridViewTextBoxColumn";
-            this.alamatDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // teleponDataGridViewTextBoxColumn
-            // 
-            this.teleponDataGridViewTextBoxColumn.DataPropertyName = "telepon";
-            this.teleponDataGridViewTextBoxColumn.HeaderText = "telepon";
-            this.teleponDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.teleponDataGridViewTextBoxColumn.Name = "teleponDataGridViewTextBoxColumn";
-            this.teleponDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
-            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.Width = 125;
             // 
             // tbluserBindingSource2
             // 
@@ -604,13 +530,6 @@
         private LKSMartDataSet lKSMartDataSet;
         private System.Windows.Forms.BindingSource tbluserBindingSource;
         private LKSMartDataSetTableAdapters.tbl_userTableAdapter tbl_userTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iduserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipeuserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alamatDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teleponDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private System.Windows.Forms.MaskedTextBox Txt_Username;
         private System.Windows.Forms.MaskedTextBox Txt_Alamat;
         private System.Windows.Forms.MaskedTextBox Txt_Telepon;

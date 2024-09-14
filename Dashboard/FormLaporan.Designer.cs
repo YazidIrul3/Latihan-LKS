@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLaporan));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -56,11 +56,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.tbl_tranksaksiTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter();
-            this.idtranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgltranksaksiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namakasirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalbayarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -227,15 +222,7 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idtranksaksiDataGridViewTextBoxColumn,
-            this.notranksaksiDataGridViewTextBoxColumn,
-            this.tgltranksaksiDataGridViewTextBoxColumn,
-            this.namakasirDataGridViewTextBoxColumn,
-            this.totalbayarDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tbltranksaksiBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -311,16 +298,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(363, 522);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Omset";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Omset";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(888, 235);
             this.chart1.TabIndex = 22;
             this.chart1.Text = "chart1";
@@ -337,47 +324,6 @@
             // tbl_tranksaksiTableAdapter
             // 
             this.tbl_tranksaksiTableAdapter.ClearBeforeFill = true;
-            // 
-            // idtranksaksiDataGridViewTextBoxColumn
-            // 
-            this.idtranksaksiDataGridViewTextBoxColumn.DataPropertyName = "id_tranksaksi";
-            this.idtranksaksiDataGridViewTextBoxColumn.HeaderText = "id_tranksaksi";
-            this.idtranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idtranksaksiDataGridViewTextBoxColumn.Name = "idtranksaksiDataGridViewTextBoxColumn";
-            this.idtranksaksiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idtranksaksiDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // notranksaksiDataGridViewTextBoxColumn
-            // 
-            this.notranksaksiDataGridViewTextBoxColumn.DataPropertyName = "no_tranksaksi";
-            this.notranksaksiDataGridViewTextBoxColumn.HeaderText = "no_tranksaksi";
-            this.notranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.notranksaksiDataGridViewTextBoxColumn.Name = "notranksaksiDataGridViewTextBoxColumn";
-            this.notranksaksiDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tgltranksaksiDataGridViewTextBoxColumn
-            // 
-            this.tgltranksaksiDataGridViewTextBoxColumn.DataPropertyName = "tgl_tranksaksi";
-            this.tgltranksaksiDataGridViewTextBoxColumn.HeaderText = "tgl_tranksaksi";
-            this.tgltranksaksiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tgltranksaksiDataGridViewTextBoxColumn.Name = "tgltranksaksiDataGridViewTextBoxColumn";
-            this.tgltranksaksiDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // namakasirDataGridViewTextBoxColumn
-            // 
-            this.namakasirDataGridViewTextBoxColumn.DataPropertyName = "nama_kasir";
-            this.namakasirDataGridViewTextBoxColumn.HeaderText = "nama_kasir";
-            this.namakasirDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.namakasirDataGridViewTextBoxColumn.Name = "namakasirDataGridViewTextBoxColumn";
-            this.namakasirDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // totalbayarDataGridViewTextBoxColumn
-            // 
-            this.totalbayarDataGridViewTextBoxColumn.DataPropertyName = "total_bayar";
-            this.totalbayarDataGridViewTextBoxColumn.HeaderText = "total_bayar";
-            this.totalbayarDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalbayarDataGridViewTextBoxColumn.Name = "totalbayarDataGridViewTextBoxColumn";
-            this.totalbayarDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormLaporan
             // 
@@ -433,10 +379,5 @@
         private System.Windows.Forms.BindingSource tbltranksaksiBindingSource;
         private FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter tbl_tranksaksiTableAdapter;
         private System.Windows.Forms.Button Btn_Filter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtranksaksiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notranksaksiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgltranksaksiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namakasirDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalbayarDataGridViewTextBoxColumn;
     }
 }
