@@ -12,9 +12,13 @@ namespace Dashboard
 {
     public partial class FormKasir : Form
     {
-        public FormKasir()
+
+        string userId, tipeUser;
+        public FormKasir(string userId,string tipeUser)
         {
             InitializeComponent();
+            this.userId = userId.ToString();
+            this.tipeUser = tipeUser.ToString();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -39,10 +43,22 @@ namespace Dashboard
 
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
-            FormKasir form = new FormKasir();
+            FormKasir form = new FormKasir(userId,tipeUser);
             this.Hide();
             form.ShowDialog();
             this.Hide();
+        }
+
+        private void FormKasir_Load(object sender, EventArgs e)
+        {
+            if (tipeUser != "Kasir")
+            {
+                MessageBox.Show("Login akun yang tipe user nya Kasir");
+                Login form = new Login();
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

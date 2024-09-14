@@ -507,6 +507,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormKasir";
             this.Text = "Kasir";
+            this.Load += new System.EventHandler(this.FormKasir_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -90,7 +90,7 @@ namespace Dashboard
 
                         if(tipeUser == "Kasir")
                         {
-                            FormKasir form = new FormKasir();
+                            FormKasir form = new FormKasir(userId,tipeUser);
                             this.Hide();
                             form.ShowDialog();
                             this.Close();
