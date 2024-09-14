@@ -46,16 +46,17 @@
             this.Btn_Filter = new System.Windows.Forms.Button();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbltranksaksiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tbltranksaksiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.Btn_Generate = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.tbl_tranksaksiTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter();
+            this.waktu_label = new System.Windows.Forms.Label();
+            this.date_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -231,16 +232,6 @@
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // tbltranksaksiBindingSource
-            // 
-            this.tbltranksaksiBindingSource.DataMember = "tbl_tranksaksi";
-            this.tbltranksaksiBindingSource.DataSource = this.fOODXYZDataSet;
-            // 
-            // fOODXYZDataSet
-            // 
-            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
-            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Azure;
@@ -281,6 +272,16 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Dari Tanggal";
             // 
+            // tbltranksaksiBindingSource
+            // 
+            this.tbltranksaksiBindingSource.DataMember = "tbl_tranksaksi";
+            this.tbltranksaksiBindingSource.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Btn_Generate
             // 
             this.Btn_Generate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
@@ -313,24 +314,37 @@
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(1063, 22);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker3.TabIndex = 23;
-            this.dateTimePicker3.Value = new System.DateTime(2024, 8, 7, 0, 0, 0, 0);
-            // 
             // tbl_tranksaksiTableAdapter
             // 
             this.tbl_tranksaksiTableAdapter.ClearBeforeFill = true;
+            // 
+            // waktu_label
+            // 
+            this.waktu_label.AutoSize = true;
+            this.waktu_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waktu_label.Location = new System.Drawing.Point(1028, 39);
+            this.waktu_label.Name = "waktu_label";
+            this.waktu_label.Size = new System.Drawing.Size(54, 19);
+            this.waktu_label.TabIndex = 25;
+            this.waktu_label.Text = "label6";
+            // 
+            // date_label
+            // 
+            this.date_label.AutoSize = true;
+            this.date_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_label.Location = new System.Drawing.Point(1028, 12);
+            this.date_label.Name = "date_label";
+            this.date_label.Size = new System.Drawing.Size(73, 27);
+            this.date_label.TabIndex = 24;
+            this.date_label.Text = "label6";
             // 
             // FormLaporan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1817, 780);
-            this.Controls.Add(this.dateTimePicker3);
+            this.Controls.Add(this.waktu_label);
+            this.Controls.Add(this.date_label);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.Btn_Generate);
             this.Controls.Add(this.panel2);
@@ -373,11 +387,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private FOODXYZDataSet fOODXYZDataSet;
         private System.Windows.Forms.BindingSource tbltranksaksiBindingSource;
         private FOODXYZDataSetTableAdapters.tbl_tranksaksiTableAdapter tbl_tranksaksiTableAdapter;
         private System.Windows.Forms.Button Btn_Filter;
+        private System.Windows.Forms.Label waktu_label;
+        private System.Windows.Forms.Label date_label;
     }
 }

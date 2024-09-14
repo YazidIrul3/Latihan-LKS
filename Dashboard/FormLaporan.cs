@@ -23,6 +23,9 @@ namespace Dashboard
             this.userId = userId.ToString();
             InitializeComponent();
             DGV();
+            date_label.Text = DateTime.Now.ToString("ddd, dd MMMM yyyy");
+            waktu_label.Text = DateTime.Now.ToString("hh:m:s");
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -50,7 +53,7 @@ namespace Dashboard
 
         private void Btn_LogActivity_Click(object sender, EventArgs e)
         {
-            FormAdmin form = new FormAdmin(tipeUser,userId);
+            Label_date form = new Label_date(tipeUser,userId);
             this.Hide();
             form.ShowDialog();
             this.Close();
@@ -59,7 +62,14 @@ namespace Dashboard
 
         private void FormLaporan_Load(object sender, EventArgs e)
         {
-          
+            if (tipeUser != "Admin")
+            {
+                MessageBox.Show("Login akun yang tipe user nya Admin");
+                Login form = new Login();
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
         }
 
         private void DGV()

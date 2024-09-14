@@ -36,11 +36,14 @@ namespace Dashboard
 
         private void FormGudang_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_barang' table. You can move, or remove it, as needed.
-            this.tbl_barangTableAdapter1.Fill(this.fOODXYZDataSet.tbl_barang);
-            // TODO: This line of code loads data into the 'lKSMartDataSet1.tbl_barang' table. You can move, or remove it, as needed.
-            this.tbl_barangTableAdapter.Fill(this.lKSMartDataSet1.tbl_barang);
-
+            if(tipeUser != "Gudang")
+            {
+                MessageBox.Show("Login akun yang tipe user nya Gudang");
+                Login form = new Login();
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
         }
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
@@ -193,6 +196,29 @@ namespace Dashboard
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Txt_Satuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void Txt_HargaSatuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Txt_JumlahBarang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void searchData()

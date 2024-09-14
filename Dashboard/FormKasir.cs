@@ -36,5 +36,24 @@ namespace Dashboard
         {
 
         }
+
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            FormKasir form = new FormKasir();
+            this.Hide();
+            form.ShowDialog();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Koneksi conn = new Koneksi();
+            conn.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Logout','" + userId.ToString() + "')");
+
+            Login form = new Login();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }

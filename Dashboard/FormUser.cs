@@ -28,6 +28,8 @@ namespace Dashboard
             dgv();
             Btn_Edit.Enabled = false;
             Btn_Hapus.Enabled = false;
+            date_label.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            waktu_label.Text = DateTime.Now.ToString("hh:m:s");
         }
 
         private void Btn_LogActivity_Click(object sender, EventArgs e)
@@ -38,7 +40,14 @@ namespace Dashboard
 
         private void FormUser_Load(object sender, EventArgs e)
         {
-        
+            if (tipeUser != "Admin")
+            {
+                MessageBox.Show("Login akun yang tipe user nya Admin");
+                Login form = new Login();
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
 
         }
 
@@ -52,7 +61,7 @@ namespace Dashboard
 
         private void Btn_LogActivity_Click_1(object sender, EventArgs e)
         {
-            FormAdmin form = new FormAdmin(tipeUser, userId);
+            Label_date form = new Label_date(tipeUser, userId);
             this.Hide();
             form.ShowDialog();
             this.Close();
@@ -60,13 +69,13 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            if (Txt_Alamat.Text == "" || Txt_Nama.Text == "" || Txt_Telepon.Text == "" || Txt_TipeUser.Text == "" || Txt_Username.Text == "") {
+            if (Txt_Alamat.Text == "" || Txt_Nama.Text == "" || Txt_Telepon.Text == "" || Txt_TIpeUser.Text == "" || Txt_Username.Text == "") {
                 MessageBox.Show("Data ada yang belum di isi");
             } else
             {
                 try
                     {
-                    conn.cud("insert into tbl_user(tipe_user, nama, alamat, username,telepon,password) values ('"+Txt_TipeUser.Text+"','"+Txt_Nama.Text+"','"+Txt_Alamat.Text+"','"+Txt_Username.Text+"','"+Txt_Telepon.Text+"','"+Txt_Password.Text+"')");
+                    conn.cud("insert into tbl_user(tipe_user, nama, alamat, username,telepon,password) values ('"+Txt_TIpeUser.Text+"','"+Txt_Nama.Text+"','"+Txt_Alamat.Text+"','"+Txt_Username.Text+"','"+Txt_Telepon.Text+"','"+Txt_Password.Text+"')");
 
                         MessageBox.Show("Data berhasil ditambahkan");
 
@@ -102,7 +111,7 @@ namespace Dashboard
 
         private void Btn_Edit_Click(object sender, EventArgs e)
         {
-            if (Txt_Alamat.Text == "" || Txt_Nama.Text == "" || Txt_Telepon.Text == "" || Txt_TipeUser.Text == "" || Txt_Username.Text == "")
+            if (Txt_Alamat.Text == "" || Txt_Nama.Text == "" || Txt_Telepon.Text == "" || Txt_TIpeUser.Text == "" || Txt_Username.Text == "")
             {
                 MessageBox.Show("Data ada yang belum di isi");
             }
@@ -110,7 +119,7 @@ namespace Dashboard
             {
                     try
                     {
-                        conn.cud("update tbl_user set nama='"+Txt_Nama.Text+"', tipe_user='"+Txt_TipeUser.Text+"', alamat='"+Txt_Alamat.Text+"', username='"+Txt_Username.Text+"', password='"+Txt_Password.Text+"' where id_user='"+id+"' ");
+                        conn.cud("update tbl_user set nama='"+Txt_Nama.Text+"', tipe_user='"+Txt_TIpeUser.Text +"', alamat='"+Txt_Alamat.Text+"', username='"+Txt_Username.Text+"', password='"+Txt_Password.Text+"' where id_user='"+id+"' ");
                         MessageBox.Show("Data berhasil diedit");
 
                         dataRefresh();
@@ -137,7 +146,7 @@ namespace Dashboard
             DataGridViewRow row = this.dataGridView1.Rows[indexRow];
             id = Convert.ToInt16(row.Cells[0].Value);
 
-            Txt_TipeUser.Text = row.Cells[1].Value.ToString();
+            Txt_TIpeUser.Text = row.Cells[1].Value.ToString();
             Txt_Nama.Text = row.Cells[2].Value.ToString();
             Txt_Alamat.Text = row.Cells[3].Value.ToString();
             Txt_Username.Text = row.Cells[4].Value.ToString();
@@ -166,7 +175,7 @@ namespace Dashboard
             Txt_Nama.Text = "";
             Txt_Password.Text = "";
             Txt_Telepon.Text = "";
-            Txt_TipeUser.Text = "";
+            Txt_TIpeUser.Text = "";
             Txt_Username.Text = "";
 
             this.Hide();

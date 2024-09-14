@@ -53,10 +53,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.Btn_Search = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lKSMartDataSet1 = new Dashboard.LKSMartDataSet1();
             this.tbl_barangTableAdapter = new Dashboard.LKSMartDataSet1TableAdapters.tbl_barangTableAdapter();
@@ -192,6 +192,7 @@
             this.Txt_JumlahBarang.Size = new System.Drawing.Size(358, 22);
             this.Txt_JumlahBarang.TabIndex = 14;
             this.Txt_JumlahBarang.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_JumlahBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_JumlahBarang_KeyPress);
             // 
             // Txt_NamaBarang
             // 
@@ -222,6 +223,7 @@
             this.Txt_Satuan.Size = new System.Drawing.Size(358, 22);
             this.Txt_Satuan.TabIndex = 18;
             this.Txt_Satuan.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_Satuan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Satuan_KeyPress);
             // 
             // label9
             // 
@@ -252,6 +254,7 @@
             this.Txt_HargaSatuan.Size = new System.Drawing.Size(358, 22);
             this.Txt_HargaSatuan.TabIndex = 22;
             this.Txt_HargaSatuan.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_HargaSatuan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_HargaSatuan_KeyPress);
             // 
             // label11
             // 
@@ -340,16 +343,6 @@
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // tblbarangBindingSource1
-            // 
-            this.tblbarangBindingSource1.DataMember = "tbl_barang";
-            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSet;
-            // 
-            // fOODXYZDataSet
-            // 
-            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
-            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Btn_Search
             // 
             this.Btn_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -374,6 +367,16 @@
             this.label12.Size = new System.Drawing.Size(135, 31);
             this.label12.TabIndex = 9;
             this.label12.Text = "Tabel User";
+            // 
+            // tblbarangBindingSource1
+            // 
+            this.tblbarangBindingSource1.DataMember = "tbl_barang";
+            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tblbarangBindingSource
             // 

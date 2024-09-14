@@ -52,9 +52,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Txt_Search = new System.Windows.Forms.RichTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbluserBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
-            this.label9 = new System.Windows.Forms.Label();
             this.tbluserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lKSMartDataSet = new Dashboard.LKSMartDataSet();
             this.dataSet1 = new Dashboard.DataSet1();
@@ -64,9 +64,20 @@
             this.Txt_Telepon = new System.Windows.Forms.MaskedTextBox();
             this.Txt_Password = new System.Windows.Forms.MaskedTextBox();
             this.Txt_Nama = new System.Windows.Forms.MaskedTextBox();
-            this.Txt_TipeUser = new System.Windows.Forms.MaskedTextBox();
             this.tbluserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tbl_userTableAdapter1 = new Dashboard.FOODXYZDataSetTableAdapters.tbl_userTableAdapter();
+            this.tbluserBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbluserBindingSource9 = new System.Windows.Forms.BindingSource(this.components);
+            this.Txt_TIpeUser = new System.Windows.Forms.ComboBox();
+            this.waktu_label = new System.Windows.Forms.Label();
+            this.date_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -78,6 +89,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource9)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -347,16 +367,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // tbluserBindingSource2
-            // 
-            this.tbluserBindingSource2.DataMember = "tbl_user";
-            this.tbluserBindingSource2.DataSource = this.fOODXYZDataSet;
-            // 
-            // fOODXYZDataSet
-            // 
-            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
-            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -367,6 +377,16 @@
             this.label9.Size = new System.Drawing.Size(135, 31);
             this.label9.TabIndex = 9;
             this.label9.Text = "Tabel User";
+            // 
+            // tbluserBindingSource2
+            // 
+            this.tbluserBindingSource2.DataMember = "tbl_user";
+            this.tbluserBindingSource2.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tbluserBindingSource
             // 
@@ -438,17 +458,6 @@
             this.Txt_Nama.TabIndex = 8;
             this.Txt_Nama.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
-            // Txt_TipeUser
-            // 
-            this.Txt_TipeUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Txt_TipeUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Txt_TipeUser.Location = new System.Drawing.Point(452, 130);
-            this.Txt_TipeUser.Name = "Txt_TipeUser";
-            this.Txt_TipeUser.Size = new System.Drawing.Size(240, 22);
-            this.Txt_TipeUser.TabIndex = 6;
-            this.Txt_TipeUser.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.Txt_TipeUser.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_TipeUser_MaskInputRejected);
-            // 
             // tbluserBindingSource1
             // 
             this.tbluserBindingSource1.DataMember = "tbl_user";
@@ -458,11 +467,90 @@
             // 
             this.tbl_userTableAdapter1.ClearBeforeFill = true;
             // 
+            // tbluserBindingSource3
+            // 
+            this.tbluserBindingSource3.DataMember = "tbl_user";
+            this.tbluserBindingSource3.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbluserBindingSource4
+            // 
+            this.tbluserBindingSource4.DataMember = "tbl_user";
+            this.tbluserBindingSource4.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbluserBindingSource5
+            // 
+            this.tbluserBindingSource5.DataMember = "tbl_user";
+            this.tbluserBindingSource5.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSetBindingSource
+            // 
+            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource.Position = 0;
+            // 
+            // tbluserBindingSource6
+            // 
+            this.tbluserBindingSource6.DataMember = "tbl_user";
+            this.tbluserBindingSource6.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbluserBindingSource7
+            // 
+            this.tbluserBindingSource7.DataMember = "tbl_user";
+            this.tbluserBindingSource7.DataSource = this.fOODXYZDataSet;
+            // 
+            // fOODXYZDataSetBindingSource1
+            // 
+            this.fOODXYZDataSetBindingSource1.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource1.Position = 0;
+            // 
+            // tbluserBindingSource8
+            // 
+            this.tbluserBindingSource8.DataMember = "tbl_user";
+            this.tbluserBindingSource8.DataSource = this.fOODXYZDataSetBindingSource1;
+            // 
+            // tbluserBindingSource9
+            // 
+            this.tbluserBindingSource9.DataMember = "tbl_user";
+            this.tbluserBindingSource9.DataSource = this.fOODXYZDataSetBindingSource1;
+            // 
+            // Txt_TIpeUser
+            // 
+            this.Txt_TIpeUser.FormattingEnabled = true;
+            this.Txt_TIpeUser.Items.AddRange(new object[] {
+            "Kasir",
+            "Gudang"});
+            this.Txt_TIpeUser.Location = new System.Drawing.Point(452, 130);
+            this.Txt_TIpeUser.Name = "Txt_TIpeUser";
+            this.Txt_TIpeUser.Size = new System.Drawing.Size(121, 24);
+            this.Txt_TIpeUser.TabIndex = 21;
+            // 
+            // waktu_label
+            // 
+            this.waktu_label.AutoSize = true;
+            this.waktu_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waktu_label.Location = new System.Drawing.Point(1063, 43);
+            this.waktu_label.Name = "waktu_label";
+            this.waktu_label.Size = new System.Drawing.Size(54, 19);
+            this.waktu_label.TabIndex = 23;
+            this.waktu_label.Text = "label6";
+            // 
+            // date_label
+            // 
+            this.date_label.AutoSize = true;
+            this.date_label.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_label.Location = new System.Drawing.Point(1063, 16);
+            this.date_label.Name = "date_label";
+            this.date_label.Size = new System.Drawing.Size(73, 27);
+            this.date_label.TabIndex = 22;
+            this.date_label.Text = "label6";
+            // 
             // FormUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 755);
+            this.Controls.Add(this.waktu_label);
+            this.Controls.Add(this.date_label);
+            this.Controls.Add(this.Txt_TIpeUser);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Btn_Hapus);
             this.Controls.Add(this.Btn_Edit);
@@ -477,7 +565,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Txt_Nama);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Txt_TipeUser);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -498,6 +585,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.lKSMartDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbluserBindingSource9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,12 +631,23 @@
         private System.Windows.Forms.MaskedTextBox Txt_Telepon;
         private System.Windows.Forms.MaskedTextBox Txt_Password;
         private System.Windows.Forms.MaskedTextBox Txt_Nama;
-        private System.Windows.Forms.MaskedTextBox Txt_TipeUser;
         private System.Windows.Forms.RichTextBox Txt_Search;
         private System.Windows.Forms.PictureBox pictureBox2;
         private FOODXYZDataSet fOODXYZDataSet;
         private System.Windows.Forms.BindingSource tbluserBindingSource1;
         private FOODXYZDataSetTableAdapters.tbl_userTableAdapter tbl_userTableAdapter1;
         private System.Windows.Forms.BindingSource tbluserBindingSource2;
+        private System.Windows.Forms.BindingSource tbluserBindingSource3;
+        private System.Windows.Forms.BindingSource tbluserBindingSource4;
+        private System.Windows.Forms.BindingSource tbluserBindingSource5;
+        private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource;
+        private System.Windows.Forms.BindingSource tbluserBindingSource6;
+        private System.Windows.Forms.BindingSource tbluserBindingSource7;
+        private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource1;
+        private System.Windows.Forms.BindingSource tbluserBindingSource8;
+        private System.Windows.Forms.BindingSource tbluserBindingSource9;
+        private System.Windows.Forms.ComboBox Txt_TIpeUser;
+        private System.Windows.Forms.Label waktu_label;
+        private System.Windows.Forms.Label date_label;
     }
 }

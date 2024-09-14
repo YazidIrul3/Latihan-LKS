@@ -12,19 +12,22 @@ using System.Windows.Forms;
 namespace Dashboard
 {
 
-    public partial class FormAdmin : Form
+    public partial class Label_date : Form
     {
         string ConnectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
         DataTable dt = new DataTable();
         SqlDataAdapter adp;
         string userId, tipeUser;
         Koneksi koneksi = new Koneksi();
-        public FormAdmin(string tipeUser,string userId)
+        public Label_date(string tipeUser,string userId)
         {
             this.userId = userId.ToString();
             this.tipeUser = tipeUser.ToString();
             InitializeComponent();
             dgv();
+
+            date_label.Text = DateTime.Now.ToString("ddd, dd MMMM yyyy");
+            waktu_label.Text = DateTime.Now.ToString("hh:m:s");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,7 +37,14 @@ namespace Dashboard
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-            
+            if (tipeUser != "Admin")
+            {
+                MessageBox.Show("Login akun yang tipe user nya Admin");
+                Login form = new Login();
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -114,6 +124,11 @@ namespace Dashboard
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

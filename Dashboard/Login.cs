@@ -74,7 +74,7 @@ namespace Dashboard
 
                         if(tipeUser == "Admin")
                         {
-                            FormAdmin formAdmin = new FormAdmin(tipeUser,userId);
+                            Label_date formAdmin = new Label_date(tipeUser,userId);
                             this.Hide();
                             formAdmin.ShowDialog();
                             this.Close();

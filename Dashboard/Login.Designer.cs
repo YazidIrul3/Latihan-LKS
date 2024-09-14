@@ -161,11 +161,11 @@
             // 
             // Txt_Password
             // 
-            this.Txt_Password.Location = new System.Drawing.Point(669, 375);
+            this.Txt_Password.Location = new System.Drawing.Point(669, 385);
             this.Txt_Password.Multiline = true;
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(408, 55);
-            this.Txt_Password.TabIndex = 32;
+            this.Txt_Password.TabIndex = 30;
             this.Txt_Password.UseSystemPasswordChar = true;
             // 
             // Login
