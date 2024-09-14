@@ -40,6 +40,7 @@ namespace Dashboard
 
         private void FormUser_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_barang' table. You can move, or remove it, as needed.
             if (tipeUser != "Admin")
             {
                 MessageBox.Show("Login akun yang tipe user nya Admin");

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKasir));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,7 +46,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Txt_NamaPelanggan = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Txt_PilihMenu = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.Txt_TotalHarga = new System.Windows.Forms.MaskedTextBox();
@@ -65,10 +65,26 @@
             this.Btn_Simpan = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Txt_PilihMenu = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
+            this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_barangTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_barangTableAdapter();
+            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -167,6 +183,7 @@
             this.Btn_Tambah.TabIndex = 31;
             this.Btn_Tambah.Text = "Tambah";
             this.Btn_Tambah.UseVisualStyleBackColor = false;
+            this.Btn_Tambah.Click += new System.EventHandler(this.Btn_Tambah_Click);
             // 
             // Txt_Quantitias
             // 
@@ -177,6 +194,8 @@
             this.Txt_Quantitias.Size = new System.Drawing.Size(240, 22);
             this.Txt_Quantitias.TabIndex = 30;
             this.Txt_Quantitias.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_Quantitias.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_Quantitias_MaskInputRejected);
+            this.Txt_Quantitias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Quantitias_KeyPress);
             // 
             // label8
             // 
@@ -248,16 +267,6 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "Nama Pelanggan";
             // 
-            // Txt_PilihMenu
-            // 
-            this.Txt_PilihMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Txt_PilihMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Txt_PilihMenu.Location = new System.Drawing.Point(387, 115);
-            this.Txt_PilihMenu.Name = "Txt_PilihMenu";
-            this.Txt_PilihMenu.Size = new System.Drawing.Size(240, 22);
-            this.Txt_PilihMenu.TabIndex = 21;
-            this.Txt_PilihMenu.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -289,6 +298,7 @@
             this.Txt_TotalHarga.Size = new System.Drawing.Size(240, 22);
             this.Txt_TotalHarga.TabIndex = 37;
             this.Txt_TotalHarga.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_TotalHarga.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_TotalHarga_MaskInputRejected);
             // 
             // label6
             // 
@@ -344,9 +354,9 @@
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
             this.label14.Location = new System.Drawing.Point(591, 242);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 19);
+            this.label14.Size = new System.Drawing.Size(43, 19);
             this.label14.TabIndex = 12;
-            this.label14.Text = "Rp. 365.000";
+            this.label14.Text = "Rp. 0";
             // 
             // label13
             // 
@@ -362,12 +372,21 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 47);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(701, 192);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(679, 182);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label12
             // 
@@ -376,9 +395,9 @@
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
             this.label12.Location = new System.Drawing.Point(3, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(135, 31);
+            this.label12.Size = new System.Drawing.Size(191, 31);
             this.label12.TabIndex = 9;
-            this.label12.Text = "Tabel User";
+            this.label12.Text = "Tabel Transaksi";
             // 
             // Btn_Buy
             // 
@@ -475,11 +494,90 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Txt_PilihMenu
+            // 
+            this.Txt_PilihMenu.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tblbarangBindingSource1, "kode_barang", true));
+            this.Txt_PilihMenu.DataSource = this.tblbarangBindingSource1;
+            this.Txt_PilihMenu.DisplayMember = "kode_barang";
+            this.Txt_PilihMenu.FormattingEnabled = true;
+            this.Txt_PilihMenu.Location = new System.Drawing.Point(385, 115);
+            this.Txt_PilihMenu.Name = "Txt_PilihMenu";
+            this.Txt_PilihMenu.Size = new System.Drawing.Size(240, 24);
+            this.Txt_PilihMenu.TabIndex = 48;
+            this.Txt_PilihMenu.ValueMember = "kode_barang";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "No Transaksi";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Kode Barang";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Nama Barang";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Harga Satuan";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Qty";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Satuan";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
+            // 
+            // fOODXYZDataSet
+            // 
+            this.fOODXYZDataSet.DataSetName = "FOODXYZDataSet";
+            this.fOODXYZDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblbarangBindingSource
+            // 
+            this.tblbarangBindingSource.DataMember = "tbl_barang";
+            this.tblbarangBindingSource.DataSource = this.fOODXYZDataSet;
+            // 
+            // tbl_barangTableAdapter
+            // 
+            this.tbl_barangTableAdapter.ClearBeforeFill = true;
+            // 
+            // fOODXYZDataSetBindingSource
+            // 
+            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource.Position = 0;
+            // 
+            // tblbarangBindingSource1
+            // 
+            this.tblbarangBindingSource1.DataMember = "tbl_barang";
+            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSetBindingSource;
+            // 
             // FormKasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1136, 847);
+            this.Controls.Add(this.Txt_PilihMenu);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.Btn_Simpan);
@@ -502,7 +600,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Txt_NamaPelanggan);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Txt_PilihMenu);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
             this.Name = "FormKasir";
@@ -514,6 +611,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,7 +637,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox Txt_NamaPelanggan;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox Txt_PilihMenu;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.MaskedTextBox Txt_TotalHarga;
@@ -557,5 +657,17 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox Txt_PilihMenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private FOODXYZDataSet fOODXYZDataSet;
+        private System.Windows.Forms.BindingSource tblbarangBindingSource;
+        private FOODXYZDataSetTableAdapters.tbl_barangTableAdapter tbl_barangTableAdapter;
+        private System.Windows.Forms.BindingSource tblbarangBindingSource1;
+        private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource;
     }
 }

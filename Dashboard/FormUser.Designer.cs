@@ -520,7 +520,7 @@
             "Gudang"});
             this.Txt_TIpeUser.Location = new System.Drawing.Point(452, 130);
             this.Txt_TIpeUser.Name = "Txt_TIpeUser";
-            this.Txt_TIpeUser.Size = new System.Drawing.Size(121, 24);
+            this.Txt_TIpeUser.Size = new System.Drawing.Size(240, 24);
             this.Txt_TIpeUser.TabIndex = 21;
             // 
             // waktu_label
