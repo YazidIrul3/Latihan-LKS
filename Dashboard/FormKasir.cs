@@ -11,7 +11,7 @@ namespace Dashboard
         string userId, tipeUser, namaKasir;
         string idTransaksi;
         string connectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
-        string namaBarang, kodeBarang, hargaSatuan, satuan, namaPelanggan, total_harga, idPelanggan;
+        string namaBarang, kodeBarang, hargaSatuan, satuan, namaPelanggan, total_harga, idPelanggan,idBarang;
         Koneksi conn = new Koneksi();
 
 
@@ -87,7 +87,10 @@ namespace Dashboard
 
         private void Btn_Print_Click(object sender, EventArgs e)
         {
-            printDocument1.Print();
+            FormReport form = new FormReport(idTransaksi);
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
         }
 
         private void Txt_PilihMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,7 +163,7 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, "Rp." + Txt_HargaSatuan.Text, Txt_Quantitias.Text, satuan);
+            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, Txt_HargaSatuan.Text, Txt_Quantitias.Text, satuan);
             totalHarga();
             dataClear();
 
@@ -175,7 +178,7 @@ namespace Dashboard
                 {
                     DataTable dt = new DataTable();
                     dt.Clear();
-                    SqlCommand cmd = new SqlCommand("select kode_barang,nama_barang,harga_satuan,satuan from tbl_barang where kode_barang = '" + Txt_PilihMenu.Text + "'");
+                    SqlCommand cmd = new SqlCommand("select kode_barang,nama_barang,harga_satuan,satuan,id_barang from tbl_barang where kode_barang = '" + Txt_PilihMenu.Text + "'");
                     cmd.Connection = connection;
                     connection.Open();
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -189,6 +192,7 @@ namespace Dashboard
                         namaBarang = row[1].ToString();
                         hargaSatuan = row[2].ToString();
                         satuan = row[3].ToString();
+                        idBarang = row[4].ToString();
                     }
 
                     Txt_HargaSatuan.Text = hargaSatuan;
@@ -302,7 +306,7 @@ namespace Dashboard
                     DataTable dt = new DataTable();
                     dt.Clear();
                     String no = DateTime.Now.ToString("yyyyMMddHHmmss");
-                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user) values ('" + no + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + namaKasir + "','" + total_harga + "','" + userId + "')");
+                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user,id_barang) values ('" + no + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + namaKasir + "','" + total_harga + "','" + userId + "','"+idBarang+"')");
 
                     SqlCommand cmd = new SqlCommand("select max(id_tranksaksi) from tbl_tranksaksi");
                     cmd.Connection = connection;
@@ -315,10 +319,12 @@ namespace Dashboard
                     {
                         idTransaksi = row[0].ToString();
                     }
+
                     Console.WriteLine(idTransaksi);
+
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + Convert.ToInt32(idTransaksi) + "', '" + Convert.ToInt32(row.Cells[4].Value.ToString()) + "', '" + row.Cells[3].Value.ToString() + "','" + Convert.ToInt32( row.Cells[5].Value.ToString()) + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
+                        conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + idTransaksi + "', '" + row.Cells[4].Value.ToString() + "', '" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
                     }
                 }
                 catch (Exception ex)
