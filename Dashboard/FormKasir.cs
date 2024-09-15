@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dashboard
@@ -14,13 +8,14 @@ namespace Dashboard
     public partial class FormKasir : Form
     {
 
-        string userId, tipeUser,namaKasir;
+        string userId, tipeUser, namaKasir;
+        string idTransaksi;
         string connectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
-        string namaBarang, kodeBarang, hargaSatuan, satuan,namaPelanggan,total_harga,idPelanggan;
+        string namaBarang, kodeBarang, hargaSatuan, satuan, namaPelanggan, total_harga, idPelanggan;
         Koneksi conn = new Koneksi();
 
 
-        public FormKasir(string userId,string tipeUser,string nama)
+        public FormKasir(string userId, string tipeUser, string nama)
         {
             InitializeComponent();
             this.userId = userId.ToString();
@@ -52,7 +47,7 @@ namespace Dashboard
 
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
-            FormKasir form = new FormKasir(userId,tipeUser, namaKasir);
+            FormKasir form = new FormKasir(userId, tipeUser, namaKasir);
             this.Hide();
             form.ShowDialog();
             this.Hide();
@@ -60,7 +55,7 @@ namespace Dashboard
 
         private void FormKasir_Load(object sender, EventArgs e)
         {
-             // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_barang' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'fOODXYZDataSet.tbl_barang' table. You can move, or remove it, as needed.
             this.tbl_barangTableAdapter.Fill(this.fOODXYZDataSet.tbl_barang);
             if (tipeUser != "Kasir")
             {
@@ -79,7 +74,7 @@ namespace Dashboard
 
         private void Txt_Quantitias_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -127,14 +122,14 @@ namespace Dashboard
 
         private void Txt_Telepon_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
         }
 
         private void Txt_Quantitias_TextChanged(object sender, EventArgs e)
         {
-            if(Txt_Quantitias.Text != "")
+            if (Txt_Quantitias.Text != "")
             {
-                int harga =  Convert.ToInt32(Txt_Quantitias.Text) * Convert.ToInt32(Txt_HargaSatuan.Text);
+                int harga = Convert.ToInt32(Txt_Quantitias.Text) * Convert.ToInt32(Txt_HargaSatuan.Text);
                 Txt_TotalHarga.Text = harga.ToString();
             }
         }
@@ -148,8 +143,8 @@ namespace Dashboard
         {
 
             long kembali = Convert.ToInt32(Txt_cash.Text) - Convert.ToInt32(total_harga);
-                label_kembalian.Text = "Rp. " + kembali.ToString();
-            
+            label_kembalian.Text = "Rp. " + kembali.ToString();
+
         }
 
         private void Btn_Simpan_Click(object sender, EventArgs e)
@@ -165,46 +160,47 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(1,kodeBarang,namaBarang, "Rp." + Txt_HargaSatuan.Text,Txt_Quantitias.Text,satuan);
+            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, "Rp." + Txt_HargaSatuan.Text, Txt_Quantitias.Text, satuan);
             totalHarga();
             dataClear();
-            
+
         }
 
 
         private void dataFormTextBoxBarang()
         {
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     DataTable dt = new DataTable();
                     dt.Clear();
-                    SqlCommand cmd = new SqlCommand("select kode_barang,nama_barang,harga_satuan,satuan from tbl_barang where kode_barang = '"+Txt_PilihMenu.Text+"'");
+                    SqlCommand cmd = new SqlCommand("select kode_barang,nama_barang,harga_satuan,satuan from tbl_barang where kode_barang = '" + Txt_PilihMenu.Text + "'");
                     cmd.Connection = connection;
                     connection.Open();
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     adp.Fill(dt);
                     cmd.ExecuteReader();
 
-                  
-                        foreach(DataRow row in dt.Rows)
-                        {
-                            kodeBarang = row[0].ToString();
-                            namaBarang = row[1].ToString();
-                            hargaSatuan = row[2].ToString();
-                            satuan = row[3].ToString();
-                        }
 
-                        Txt_HargaSatuan.Text = hargaSatuan;
-                                            
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        kodeBarang = row[0].ToString();
+                        namaBarang = row[1].ToString();
+                        hargaSatuan = row[2].ToString();
+                        satuan = row[3].ToString();
+                    }
+
+                    Txt_HargaSatuan.Text = hargaSatuan;
+
 
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
-                } finally
+                }
+                finally
                 {
                     connection.Close();
                 }
@@ -220,14 +216,14 @@ namespace Dashboard
                 {
                     DataTable dt = new DataTable();
                     dt.Clear();
-                    SqlCommand cmd = new SqlCommand("select nama,id_pelanggan from tbl_pelanggan where telepon='"+Txt_Telepon.Text+"'");
+                    SqlCommand cmd = new SqlCommand("select nama,id_pelanggan from tbl_pelanggan where telepon='" + Txt_Telepon.Text + "'");
                     cmd.Connection = connection;
                     connection.Open();
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     adp.Fill(dt);
                     cmd.ExecuteReader();
 
-                    if(dt.Rows.Count > 0)
+                    if (dt.Rows.Count > 0)
                     {
                         foreach (DataRow row in dt.Rows)
                         {
@@ -236,12 +232,14 @@ namespace Dashboard
                         }
 
                         Txt_NamaPelanggan.Text = namaPelanggan;
-                    } 
+                    }
 
-                } catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
-                } finally
+                }
+                finally
                 {
                     connection.Close();
                 }
@@ -301,9 +299,27 @@ namespace Dashboard
             {
                 try
                 {
+                    DataTable dt = new DataTable();
+                    dt.Clear();
                     String no = DateTime.Now.ToString("yyyyMMddHHmmss");
-                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user) values ('"+no+"','" + DateTime.Now.ToString("yyyy-MM-dd") + "','"+namaKasir+"','"+total_harga+"','"+userId+"')");
-                    
+                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user) values ('" + no + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + namaKasir + "','" + total_harga + "','" + userId + "')");
+
+                    SqlCommand cmd = new SqlCommand("select max(id_tranksaksi) from tbl_tranksaksi");
+                    cmd.Connection = connection;
+                    connection.Open();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+                    cmd.ExecuteReader();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        idTransaksi = row[0].ToString();
+                    }
+                    Console.WriteLine(idTransaksi);
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + Convert.ToInt32(idTransaksi) + "', '" + Convert.ToInt32(row.Cells[4].Value.ToString()) + "', '" + row.Cells[3].Value.ToString() + "','" + Convert.ToInt32( row.Cells[5].Value.ToString()) + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
+                    }
                 }
                 catch (Exception ex)
                 {
