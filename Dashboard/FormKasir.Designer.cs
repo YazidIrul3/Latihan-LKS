@@ -53,38 +53,39 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.Btn_Buy = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.Btn_Print = new System.Windows.Forms.Button();
-            this.Btn_Simpan = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Txt_PilihMenu = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Btn_Buy = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label_kembalian = new System.Windows.Forms.Label();
+            this.Btn_Print = new System.Windows.Forms.Button();
+            this.Btn_Simpan = new System.Windows.Forms.Button();
+            this.Txt_cash = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Txt_PilihMenu = new System.Windows.Forms.ComboBox();
+            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fOODXYZDataSet = new Dashboard.FOODXYZDataSet();
             this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbl_barangTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_barangTableAdapter();
-            this.fOODXYZDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tblbarangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -195,6 +196,7 @@
             this.Txt_Quantitias.TabIndex = 30;
             this.Txt_Quantitias.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.Txt_Quantitias.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_Quantitias_MaskInputRejected);
+            this.Txt_Quantitias.TextChanged += new System.EventHandler(this.Txt_Quantitias_TextChanged);
             this.Txt_Quantitias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Quantitias_KeyPress);
             // 
             // label8
@@ -236,6 +238,9 @@
             this.Txt_Telepon.Size = new System.Drawing.Size(240, 22);
             this.Txt_Telepon.TabIndex = 25;
             this.Txt_Telepon.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_Telepon.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Txt_Telepon_MaskInputRejected);
+            this.Txt_Telepon.TextChanged += new System.EventHandler(this.Txt_Telepon_TextChanged);
+            this.Txt_Telepon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Telepon_KeyPress);
             // 
             // label5
             // 
@@ -315,7 +320,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.labelTotal);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.label12);
@@ -347,16 +352,16 @@
             this.label15.TabIndex = 13;
             this.label15.Text = "Desc";
             // 
-            // label14
+            // labelTotal
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
-            this.label14.Location = new System.Drawing.Point(591, 242);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 19);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Rp. 0";
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(85)))), ((int)(((byte)(109)))));
+            this.labelTotal.Location = new System.Drawing.Point(591, 242);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(43, 19);
+            this.labelTotal.TabIndex = 12;
+            this.labelTotal.Text = "Rp. 0";
             // 
             // label13
             // 
@@ -387,6 +392,49 @@
             this.dataGridView1.Size = new System.Drawing.Size(679, 182);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.TabIndexChanged += new System.EventHandler(this.dataGridView1_TabIndexChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "No Transaksi";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Kode Barang";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Nama Barang";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Harga Satuan";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Qty";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Satuan";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
             // 
             // label12
             // 
@@ -432,15 +480,15 @@
             this.label17.TabIndex = 42;
             this.label17.Text = "Jumlah Kembalian";
             // 
-            // label18
+            // label_kembalian
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(522, 717);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(79, 16);
-            this.label18.TabIndex = 43;
-            this.label18.Text = "Rp. 35.000";
+            this.label_kembalian.AutoSize = true;
+            this.label_kembalian.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_kembalian.Location = new System.Drawing.Point(522, 717);
+            this.label_kembalian.Name = "label_kembalian";
+            this.label_kembalian.Size = new System.Drawing.Size(43, 16);
+            this.label_kembalian.TabIndex = 43;
+            this.label_kembalian.Text = "Rp. 0";
             // 
             // Btn_Print
             // 
@@ -454,6 +502,7 @@
             this.Btn_Print.TabIndex = 44;
             this.Btn_Print.Text = "Print";
             this.Btn_Print.UseVisualStyleBackColor = false;
+            this.Btn_Print.Click += new System.EventHandler(this.Btn_Print_Click);
             // 
             // Btn_Simpan
             // 
@@ -467,18 +516,20 @@
             this.Btn_Simpan.TabIndex = 45;
             this.Btn_Simpan.Text = "Simpan";
             this.Btn_Simpan.UseVisualStyleBackColor = false;
+            this.Btn_Simpan.Click += new System.EventHandler(this.Btn_Simpan_Click);
             // 
-            // maskedTextBox1
+            // Txt_cash
             // 
-            this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.maskedTextBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.maskedTextBox1.Location = new System.Drawing.Point(385, 646);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(215, 22);
-            this.maskedTextBox1.TabIndex = 46;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            this.Txt_cash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Txt_cash.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Txt_cash.Location = new System.Drawing.Point(385, 646);
+            this.Txt_cash.Name = "Txt_cash";
+            this.Txt_cash.Size = new System.Drawing.Size(215, 22);
+            this.Txt_cash.TabIndex = 46;
+            this.Txt_cash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Txt_cash.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_cash.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            this.Txt_cash.TextChanged += new System.EventHandler(this.maskedTextBox1_TextChanged);
             // 
             // button1
             // 
@@ -505,48 +556,17 @@
             this.Txt_PilihMenu.Size = new System.Drawing.Size(240, 24);
             this.Txt_PilihMenu.TabIndex = 48;
             this.Txt_PilihMenu.ValueMember = "kode_barang";
+            this.Txt_PilihMenu.SelectedIndexChanged += new System.EventHandler(this.Txt_PilihMenu_SelectedIndexChanged);
             // 
-            // Column1
+            // tblbarangBindingSource1
             // 
-            this.Column1.HeaderText = "No Transaksi";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
+            this.tblbarangBindingSource1.DataMember = "tbl_barang";
+            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSetBindingSource;
             // 
-            // Column2
+            // fOODXYZDataSetBindingSource
             // 
-            this.Column2.HeaderText = "Kode Barang";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Nama Barang";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Harga Satuan";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Qty";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Satuan";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
+            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
+            this.fOODXYZDataSetBindingSource.Position = 0;
             // 
             // fOODXYZDataSet
             // 
@@ -562,16 +582,6 @@
             // 
             this.tbl_barangTableAdapter.ClearBeforeFill = true;
             // 
-            // fOODXYZDataSetBindingSource
-            // 
-            this.fOODXYZDataSetBindingSource.DataSource = this.fOODXYZDataSet;
-            this.fOODXYZDataSetBindingSource.Position = 0;
-            // 
-            // tblbarangBindingSource1
-            // 
-            this.tblbarangBindingSource1.DataMember = "tbl_barang";
-            this.tblbarangBindingSource1.DataSource = this.fOODXYZDataSetBindingSource;
-            // 
             // FormKasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -579,10 +589,10 @@
             this.ClientSize = new System.Drawing.Size(1136, 847);
             this.Controls.Add(this.Txt_PilihMenu);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.Txt_cash);
             this.Controls.Add(this.Btn_Simpan);
             this.Controls.Add(this.Btn_Print);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label_kembalian);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.Btn_Buy);
             this.Controls.Add(this.panel2);
@@ -611,10 +621,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fOODXYZDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblbarangBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,14 +657,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Button Btn_Buy;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label_kembalian;
         private System.Windows.Forms.Button Btn_Print;
         private System.Windows.Forms.Button Btn_Simpan;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox Txt_cash;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox Txt_PilihMenu;
@@ -669,5 +679,6 @@
         private FOODXYZDataSetTableAdapters.tbl_barangTableAdapter tbl_barangTableAdapter;
         private System.Windows.Forms.BindingSource tblbarangBindingSource1;
         private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

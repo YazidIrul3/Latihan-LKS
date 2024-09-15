@@ -17,7 +17,7 @@ namespace Dashboard
         Koneksi koneksi = new Koneksi();
 
         DataTable dt = new DataTable();
-        string userId, tipeUser;
+        string userId, tipeUser,nama;
         public Login()
         {
             InitializeComponent();
@@ -69,6 +69,7 @@ namespace Dashboard
                         {
                             userId = row[0].ToString();
                             tipeUser = row[1].ToString();
+                            nama = row[2].ToString();
                         }
                     koneksi.cud("insert into tbl_log (waktu,aktivitas,id_user) values ('" + DateTime.Now.ToString("yyyy-MM-dd") + "','Login','" + userId.ToString() + "')");
 
@@ -90,7 +91,7 @@ namespace Dashboard
 
                         if(tipeUser == "Kasir")
                         {
-                            FormKasir form = new FormKasir(userId,tipeUser);
+                            FormKasir form = new FormKasir(userId,tipeUser,nama);
                             this.Hide();
                             form.ShowDialog();
                             this.Close();
