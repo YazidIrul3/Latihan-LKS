@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,13 @@ namespace Dashboard
                     dataGridView1.Columns[0].HeaderText = "Nama Barang";
                     dataGridView1.Columns[1].HeaderText = "Jumlah beli";
                     dataGridView1.Columns[2].HeaderText = "Sub Total";
-                } catch (Exception ex)
+
+                    print(panelPrint);
+
+
+
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                 } finally
@@ -58,9 +65,49 @@ namespace Dashboard
             }
          }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void print(Panel pnl)
+        {
+            try
+            {
+                PrinterSettings ps = new PrinterSettings();
+                panelPrint = pnl;
+                getPrintArea(pnl);
+                printPreviewDialog1.Document = printDocument1;
+                printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+                printPreviewDialog1.ShowDialog();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private Bitmap memoryImg;
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pageArea = e.PageBounds;
+            e.Graphics.DrawImage(memoryImg,(pageArea.Width/2) - (this.panelPrint.Width / 2), this.panelPrint.Location.Y);
+        }
+
+        private void getPrintArea(Panel pnl)
+        {
+            try
+            {
+                memoryImg = new Bitmap(pnl.Width, pnl.Height);
+                pnl.DrawToBitmap(memoryImg,new Rectangle(0, 0, pnl.Width, pnl.Height));
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void labelData()
@@ -88,7 +135,7 @@ namespace Dashboard
                         }
 
                         label_tanggal.Text = tanggal;
-                        label_nama.Text = noHP;
+                        label_noTransaksi.Text = noHP;
                     }
 
                     

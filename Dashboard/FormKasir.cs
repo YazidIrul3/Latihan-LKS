@@ -163,7 +163,7 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, Txt_HargaSatuan.Text, Txt_Quantitias.Text, satuan);
+            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, Txt_HargaSatuan.Text, Txt_Quantitias.Text, Txt_TotalHarga.Text);
             totalHarga();
             dataClear();
 
@@ -234,8 +234,8 @@ namespace Dashboard
                             namaPelanggan = row[0].ToString();
                             idPelanggan = row[1].ToString();
                         }
-
                         Txt_NamaPelanggan.Text = namaPelanggan;
+
                     }
 
                 }
@@ -320,11 +320,13 @@ namespace Dashboard
                         idTransaksi = row[0].ToString();
                     }
 
-                    Console.WriteLine(idTransaksi);
 
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
+                        if(row.IsNewRow)
+                        {
                         conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + idTransaksi + "', '" + row.Cells[4].Value.ToString() + "', '" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
+                        }
                     }
                 }
                 catch (Exception ex)
