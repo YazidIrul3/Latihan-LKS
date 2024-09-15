@@ -79,7 +79,10 @@ namespace Dashboard
 
         private void Txt_Quantitias_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            {
+                e.Handled = true;
+            }
         }
 
         private void Txt_TotalHarga_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -298,7 +301,8 @@ namespace Dashboard
             {
                 try
                 {
-                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user,id_pelanggan,id_barang) values ('FB00','" + DateTime.Now.ToString("yyyy-MM-dd") + "','"+namaKasir+"','"+total_harga+"','"+userId+"','"+idPelanggan+"','1')");
+                    String no = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    conn.cud("insert into tbl_tranksaksi (no_tranksaksi,tgl_tranksaksi,nama_kasir,total_bayar,id_user) values ('"+no+"','" + DateTime.Now.ToString("yyyy-MM-dd") + "','"+namaKasir+"','"+total_harga+"','"+userId+"')");
                     
                 }
                 catch (Exception ex)
