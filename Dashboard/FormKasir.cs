@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrystalDecisions.ReportAppServer.Controllers;
+using CrystalDecisions.Web;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -87,10 +89,33 @@ namespace Dashboard
 
         private void Btn_Print_Click(object sender, EventArgs e)
         {
-            FormReport form = new FormReport(idTransaksi);
-            this.Hide();
-            form.ShowDialog();
-            this.Close();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    Report fr = new Report();
+                    fr.Show();
+
+
+                    SqlCommand cmd = new SqlCommand("select * from tbl_detailTranksaksi where id_tranksaksi = '" + idTransaksi + "'");
+                    cmd.Connection = conn;
+                    conn.Open();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adp.Fill(ds);
+
+                    CrystalReport2 cr2 = new CrystalReport2();
+                    cr2.SetDataSource(ds);
+                    fr.crystalReportViewer1.ReportSource = cr2;
+                    fr.crystalReportViewer1.Refresh();
+                      
+                     
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                } finally { conn.Close(); }
+            }
         }
 
         private void Txt_PilihMenu_SelectedIndexChanged(object sender, EventArgs e)

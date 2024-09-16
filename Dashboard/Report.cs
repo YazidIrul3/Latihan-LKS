@@ -16,5 +16,10 @@ namespace Dashboard
         {
             InitializeComponent();
         }
+
+        private void CrystalReport24_InitReport(object sender, EventArgs e)
+        {
+
+        }
     }
 }

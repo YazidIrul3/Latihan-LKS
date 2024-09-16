@@ -28,21 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.serverFileReportService1 = new CrystalDecisions.Web.Services.ServerFileReportService();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.CrystalReport24 = new Dashboard.CrystalReport2();
+            this.CrystalReport22 = new Dashboard.CrystalReport2();
+            this.CrystalReport21 = new Dashboard.CrystalReport2();
+            this.CrystalReport23 = new Dashboard.CrystalReport2();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.crystalReportViewer1.ActiveViewIndex = 0;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ReportSource = "C:\\Users\\MyBook Z Series\\source\\repos\\YazidIrul3\\Latihan-LKS\\Dashboard\\CrystalRep" +
+    "ort2.rpt";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1183, 713);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // CrystalReport24
+            // 
+            this.CrystalReport24.InitReport += new System.EventHandler(this.CrystalReport24_InitReport);
             // 
             // Report
             // 
@@ -57,8 +68,11 @@
         }
 
         #endregion
-
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private CrystalDecisions.Web.Services.ServerFileReportService serverFileReportService1;
+        private CrystalReport2 CrystalReport21;
+        private CrystalReport2 CrystalReport22;
+        private CrystalReport2 CrystalReport23;
+        private CrystalReport2 CrystalReport24;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

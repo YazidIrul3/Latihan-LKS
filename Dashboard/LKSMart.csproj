@@ -63,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassConnection.cs" />
+    <Compile Include="CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +78,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FOODXYZDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FOODXYZDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FOODXYZDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
@@ -134,6 +145,10 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +204,17 @@
     <None Include="FOODXYZDataSet.xss">
       <DependentUpon>FOODXYZDataSet.xsd</DependentUpon>
     </None>
+    <None Include="FOODXYZDataSet1.xsc">
+      <DependentUpon>FOODXYZDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FOODXYZDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FOODXYZDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FOODXYZDataSet1.xss">
+      <DependentUpon>FOODXYZDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="LKSMartDataSet.xsc">
       <DependentUpon>LKSMartDataSet.xsd</DependentUpon>
     </None>
@@ -223,6 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

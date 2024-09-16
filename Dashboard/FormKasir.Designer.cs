@@ -78,7 +78,6 @@
             this.tblbarangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbl_barangTableAdapter = new Dashboard.FOODXYZDataSetTableAdapters.tbl_barangTableAdapter();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -319,7 +318,6 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.crystalReportViewer1);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.labelTotal);
@@ -584,16 +582,6 @@
             // 
             this.tbl_barangTableAdapter.ClearBeforeFill = true;
             // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(424, 232);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(150, 150);
-            this.crystalReportViewer1.TabIndex = 15;
-            // 
             // FormKasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -692,6 +680,5 @@
         private System.Windows.Forms.BindingSource tblbarangBindingSource1;
         private System.Windows.Forms.BindingSource fOODXYZDataSetBindingSource;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
