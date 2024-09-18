@@ -102,7 +102,7 @@ namespace Dashboard
                     conn.Open();
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
-                    adp.Fill(ds);
+                    adp.Fill(ds,"tbl_detailTranksaksi");
 
                     CrystalReport2 cr2 = new CrystalReport2();
                     cr2.SetDataSource(ds);
@@ -179,6 +179,7 @@ namespace Dashboard
         {
             tambahPelanggan();
             transaksi();
+            detailTranksaksi();
             MessageBox.Show("simpan data berhasil");
         }
 
@@ -188,7 +189,7 @@ namespace Dashboard
 
         private void Btn_Tambah_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(1, kodeBarang, namaBarang, Txt_HargaSatuan.Text, Txt_Quantitias.Text, Txt_TotalHarga.Text);
+            dataGridView1.Rows.Add(DateTime.Now.ToString("yyyyMMddHHmmss"), kodeBarang, namaBarang, Txt_HargaSatuan.Text, Txt_Quantitias.Text, Txt_TotalHarga.Text);
             totalHarga();
             dataClear();
 
@@ -345,7 +346,7 @@ namespace Dashboard
                         idTransaksi = row[0].ToString();
                     }
 
-
+                    /*
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         if(row.IsNewRow)
@@ -353,6 +354,7 @@ namespace Dashboard
                         conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + idTransaksi + "', '" + row.Cells[4].Value.ToString() + "', '" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
                         }
                     }
+                    */
                 }
                 catch (Exception ex)
                 {
@@ -363,6 +365,23 @@ namespace Dashboard
                     connection.Close();
                 }
             }
+        }
+
+        private void detailTranksaksi()
+        {
+            try
+            {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        
+                        conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + idTransaksi + "', '" + row.Cells[4].Value.ToString() + "', '" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
+                    }
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+              
+            
         }
     }
 }
