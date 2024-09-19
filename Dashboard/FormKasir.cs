@@ -23,7 +23,7 @@ namespace Dashboard
             this.userId = userId.ToString();
             this.tipeUser = tipeUser.ToString();
             this.namaKasir = nama.ToString();
-
+            Btn_Print.Enabled = false;
 
         }
 
@@ -181,6 +181,7 @@ namespace Dashboard
             transaksi();
             detailTranksaksi();
             MessageBox.Show("simpan data berhasil");
+            Btn_Print.Enabled = true;
         }
 
         private void Txt_Telepon_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
