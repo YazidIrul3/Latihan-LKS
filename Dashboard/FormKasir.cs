@@ -14,7 +14,10 @@ namespace Dashboard
         string idTransaksi;
         string connectionString = "Data Source=MYBOOKZSERIES;Initial Catalog=FOODXYZ;Integrated Security=True;";
         string namaBarang, kodeBarang, hargaSatuan, satuan, namaPelanggan, total_harga, idPelanggan,idBarang;
+        string noHP;
         Koneksi conn = new Koneksi();
+        DataTable dt = new DataTable();
+
 
 
         public FormKasir(string userId, string tipeUser, string nama)
@@ -93,7 +96,7 @@ namespace Dashboard
             {
                 try
                 {
-                    Report fr = new Report();
+                    Report fr = new Report(noHP);
                     fr.Show();
 
 
@@ -107,7 +110,15 @@ namespace Dashboard
                     CrystalReport2 cr2 = new CrystalReport2();
                     cr2.SetDataSource(ds);
                     fr.crystalReportViewer1.ReportSource = cr2;
+
+                    //otherDataReport();
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        noHP = dr[1].ToString();
+                    }
                     fr.crystalReportViewer1.Refresh();
+                    
                       
                      
                 }
@@ -196,7 +207,28 @@ namespace Dashboard
 
         }
 
+        private void otherDataReport()
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
 
+                    dt.Clear();
+                    SqlCommand cmd1 = new SqlCommand("select tt.tgl_tranksaksi,td.nomer_hp from tbl_detailTranksaksi as td inner join tbl_tranksaksi as tt on td.id_tranksaksi = tt.id_tranksaksi where td.id_tranksaksi = '" + idTransaksi + "'");
+                    cmd1.Connection = conn;
+                    conn.Open();
+                    SqlDataAdapter adp2 = new SqlDataAdapter(cmd1);
+                    adp2.Fill(dt);
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                } finally
+                {
+                    conn.Close();
+                }
+            }
+        }
         private void dataFormTextBoxBarang()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -374,7 +406,6 @@ namespace Dashboard
             {
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        
                         conn.cud("insert into tbl_detailTranksaksi (id_tranksaksi,qty,harga_satuan,subtotal,pembayaran,nomer_hp) values ('" + idTransaksi + "', '" + row.Cells[4].Value.ToString() + "', '" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" + total_harga + "','" + Txt_Telepon.Text.ToString() + "') ");
                     }
             } catch(Exception ex)

@@ -133,6 +133,7 @@ namespace Dashboard
 
         }
 
+        
         private void showDGV()
         {
             using(SqlConnection conn = new SqlConnection(ConnectionString))
@@ -147,12 +148,13 @@ namespace Dashboard
                 adp.Fill(dt);
                 } catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                     MessageBox.Show(ex.Message.ToString());
                 } finally
                 {
                     conn.Close();
                 }
             }
         }
+       
     }
 }

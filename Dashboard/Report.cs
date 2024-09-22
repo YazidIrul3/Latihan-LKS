@@ -12,12 +12,20 @@ namespace Dashboard
 {
     public partial class Report : Form
     {
-        public Report()
+
+        string noHP;
+        public Report(string noHP)
         {
             InitializeComponent();
+            label_noHP.Text = noHP;
         }
 
         private void CrystalReport24_InitReport(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
 
         }
