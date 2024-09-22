@@ -227,6 +227,14 @@ namespace Dashboard
             searchData();
         }
 
+        private void Txt_Telepon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+        }
+
         private void searchData()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

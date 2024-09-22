@@ -436,6 +436,7 @@
             this.Txt_Telepon.Size = new System.Drawing.Size(240, 22);
             this.Txt_Telepon.TabIndex = 10;
             this.Txt_Telepon.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.Txt_Telepon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Telepon_KeyPress);
             // 
             // Txt_Password
             // 

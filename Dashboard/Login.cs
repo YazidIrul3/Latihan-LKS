@@ -22,7 +22,8 @@ namespace Dashboard
         {
             InitializeComponent();
             Txt_Username.Text = "wahyu123";
-            Txt_Password.Text = "12345678";
+            Txt_Password.PasswordChar = '*';
+            //Txt_Password.Text = "12345678";
         }
 
         private void button2_Click(object sender, EventArgs e)
